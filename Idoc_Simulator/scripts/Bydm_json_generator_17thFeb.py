@@ -78,43 +78,61 @@ def validate_data(value, validation_rule, field_name):
             return None
     return value
 # Recursive function to parse IDoc segments
-def parse_segment(segment, segment_name, config, parent_json):
-    segment_mapping = config["mappings"].get(segment_name, {})
+def parse_segment(segment, mapping_info, parent_json):
+    """
+    Recursively parses an XML segment using the provided mapping info.
+    
+    Args:
+        segment (xml.etree.ElementTree.Element): The current XML element.
+        mapping_info (dict): Mapping information for the current segment.
+        parent_json (dict): The JSON object being built.
+    """
     for field in segment:
         src_field = field.tag
-        src_value = field.text.strip() if field.text else ""
-        if src_field in segment_mapping:
-            mapping_info = segment_mapping[src_field]
-            if 'target' in mapping_info:
-                target_field = mapping_info["target"] #need to run a loop if mapping_info ['target'] is mssing,need to check more mappings        
-                transformation = mapping_info.get("transformation")
-                validation_rule = mapping_info.get("validation")
-                transformed_value = apply_transformation(src_value, transformation)
-                valid_value = validate_data(transformed_value, validation_rule, src_field)
-                if valid_value is not None:
-                    set_nested_value(parent_json, target_field, valid_value)
-                    logging.info(f"Mapped '{src_field}' → '{target_field}', Value: '{valid_value}'")
-            else:
-                print(mapping_info.items())
-                #need to run a loop if mapping_info ['target'] is mssing,need to check more mappings        
-                
+        if src_field not in mapping_info:
+            logging.warning(f"Unmapped field '{src_field}' in segment '{segment.tag}'")
+            continue
+
+        field_mapping = mapping_info[src_field]
+        
+        # If the mapping contains a 'target', then it's a leaf node.
+        if isinstance(field_mapping, dict) and "target" in field_mapping:
+            src_value = field.text.strip() if field.text else ""
+            transformation = field_mapping.get("transformation")
+            validation_rule = field_mapping.get("validation")
+            transformed_value = apply_transformation(src_value, transformation)
+            valid_value = validate_data(transformed_value, validation_rule, src_field)
+            if valid_value is not None:
+                set_nested_value(parent_json, field_mapping["target"], valid_value)
+                logging.info(f"Mapped '{src_field}' → '{field_mapping['target']}', Value: '{valid_value}'")
+        
+        # Otherwise, assume it is a nested segment mapping and process its children.
+        elif isinstance(field_mapping, dict):
+            parse_segment(field, field_mapping, parent_json)
         else:
-            logging.warning(f"Unmapped field '{src_field}' in segment '{segment_name}'")
+            logging.warning(f"Invalid mapping for field '{src_field}' in segment '{segment.tag}'")
+
 # Parse IDoc XML and transform into JSON
 def parse_idoc(xml_path, config, template):
     try:
         tree = ET.parse(xml_path)
         root = tree.getroot()
         bydm_data = [template.copy()]  # Start with a list containing the expected template
-        for segment in root.findall("./*"):  # Iterate over all segments
-            segment_name = segment.tag
-            if segment_name in config['mappings']:  # Check if the segment is mapped
-                parse_segment(segment, segment_name, config, bydm_data[0])  # Pass the first object in the list
+
+        # Process each top-level segment using its mapping from config
+        for segment in root.findall("./*"):
+            seg_name = segment.tag
+            if seg_name in config['mappings']:
+                parse_segment(segment, config['mappings'][seg_name], bydm_data[0])
+            else:
+                logging.warning(f"No mapping found for segment '{seg_name}'")
+                
         logging.info(f"IDoc successfully parsed from {xml_path}")
         return bydm_data
     except Exception as e:
         logging.error(f"Error parsing IDoc: {e}")
         raise
+
 # Main execution
 if __name__ == "__main__":
     # idoc_xml_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/source/Cust Locations IDOC.xml"
