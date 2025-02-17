@@ -3,6 +3,10 @@ import json
 import os
 import logging
 from datetime import datetime
+from pathlib import Path
+
+os.chdir('../')
+base_path = os.getcwd()
 # Configure logging
 log_file = f"logs/idoc_to_bydm_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
 os.makedirs("logs", exist_ok=True)
@@ -81,14 +85,19 @@ def parse_segment(segment, segment_name, config, parent_json):
         src_value = field.text.strip() if field.text else ""
         if src_field in segment_mapping:
             mapping_info = segment_mapping[src_field]
-            target_field = mapping_info["target"]
-            transformation = mapping_info.get("transformation")
-            validation_rule = mapping_info.get("validation")
-            transformed_value = apply_transformation(src_value, transformation)
-            valid_value = validate_data(transformed_value, validation_rule, src_field)
-            if valid_value is not None:
-                set_nested_value(parent_json, target_field, valid_value)
-                logging.info(f"Mapped '{src_field}' → '{target_field}', Value: '{valid_value}'")
+            if 'target' in mapping_info:
+                target_field = mapping_info["target"] #need to run a loop if mapping_info ['target'] is mssing,need to check more mappings        
+                transformation = mapping_info.get("transformation")
+                validation_rule = mapping_info.get("validation")
+                transformed_value = apply_transformation(src_value, transformation)
+                valid_value = validate_data(transformed_value, validation_rule, src_field)
+                if valid_value is not None:
+                    set_nested_value(parent_json, target_field, valid_value)
+                    logging.info(f"Mapped '{src_field}' → '{target_field}', Value: '{valid_value}'")
+            else:
+                print(mapping_info.items())
+                #need to run a loop if mapping_info ['target'] is mssing,need to check more mappings        
+                
         else:
             logging.warning(f"Unmapped field '{src_field}' in segment '{segment_name}'")
 # Parse IDoc XML and transform into JSON
@@ -108,10 +117,15 @@ def parse_idoc(xml_path, config, template):
         raise
 # Main execution
 if __name__ == "__main__":
-    idoc_xml_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/source/Cust Locations IDOC.xml"
-    config_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/config_file/Location_mapping.json"
-    template_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/config_file/Location_Template.json"
-    bydm_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/output/bydm_17th_Feb.json"
+    # idoc_xml_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/source/Cust Locations IDOC.xml"
+    # config_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/config_file/Location_mapping.json"
+    # template_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/config_file/Location_Template.json"
+    # bydm_json_path = "C:/Users/FQ427DY/Downloads/Idoc_Simulator/output/bydm_17th_Feb.json"
+
+    idoc_xml_path = Path(base_path + "/source/Cust Locations IDOC.xml")
+    config_json_path = Path(base_path + "/config_file/Location_mapping.json")
+    template_json_path = Path(base_path + "/config_file/Location_Template.json")
+    bydm_json_path = Path(base_path + "/output/bydm_17th_Feb.json")
     
     logging.info("Starting IDoc to BYDM JSON conversion")
     
