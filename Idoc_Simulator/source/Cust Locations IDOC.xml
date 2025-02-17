@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IDOC BEGIN="1">
+  <EDI_DC40 SEGMENT="1">
+    <TABNAM>EDI_DC40</TABNAM>
+    <MANDT>100</MANDT>
+    <DOCNUM>00000000000098765432</DOCNUM>  <!-- Unique IDoc Number -->
+    <DIRECT>2</DIRECT>  <!-- 1 = Outbound, 2 = Inbound -->
+    <OUTMOD>2</OUTMOD>
+    <IDOCTYP>DEBMAS06</IDOCTYP>  <!-- IDoc Type for Customer Master -->
+    <MESTYP>DEBMAS</MESTYP>  <!-- Message Type -->
+    <SNDPOR>SAPECC</SNDPOR>  <!-- Sending Port -->
+    <SNDPRT>LS</SNDPRT>  <!-- Sender Partner Type -->
+    <SNDPRN>SAP_SYSTEM</SNDPRN>  <!-- Sender Partner Number -->
+    <RCVPOR>BY_TMS</RCVPOR>  <!-- Receiver Port (BlueYonder TMS) -->
+    <RCVPRT>LS</RCVPRT>  <!-- Receiver Partner Type -->
+    <RCVPRN>BY_TMS_SYSTEM</RCVPRN>  <!-- Receiver Partner Number -->
+  </EDI_DC40>
+  
+  <E1KNA1M SEGMENT="1">  <!-- Customer Master General Data -->
+    <KUNNR>0000100000</KUNNR>  <!-- Customer Number -->
+    <LAND1>US</LAND1>  <!-- Country Code -->
+    <NAME1>ABC Logistics Inc.</NAME1>  <!-- Customer Name -->
+    <ORT01>New York</ORT01>  <!-- City -->
+    <PSTLZ>10001</PSTLZ>  <!-- Postal Code -->
+    <REGIO>NY</REGIO>  <!-- Region (State) -->
+    <STRAS>123 Main Street</STRAS>  <!-- Street Address -->
+    <TELF1>+1 555 123 4567</TELF1>  <!-- Telephone Number -->
+    <LIFNR>0000100000</LIFNR>  <!-- Vendor Number (for shipping locations) -->
+    <SPRAS>EN</SPRAS>  <!-- Language Key -->
+  </E1KNA1M>
+  
+  <E1KNVVM SEGMENT="1">  <!-- Sales Area Data -->
+    <VKORG>1000</VKORG>  <!-- Sales Organization -->
+    <VTWEG>10</VTWEG>  <!-- Distribution Channel -->
+    <SPART>00</SPART>  <!-- Division -->
+    <E1KNVPM SEGMENT="1">  <!-- Partner Functions (AG, WE, etc.) -->
+      <PARVW>AG</PARVW>  <!-- Partner Function (AG - Sold-to Party) -->
+      <KUNNR>0000100000</KUNNR>  <!-- Sold-to Party Number -->
+    </E1KNVPM>
+    <E1KNVPM SEGMENT="1">  <!-- Partner Function (WE - Ship-to Party) -->
+      <PARVW>WE</PARVW>  <!-- Partner Function (WE - Ship-to Party) -->
+      <KUNNR>0000100001</KUNNR>  <!-- Ship-to Party Number -->
+    </E1KNVPM>
+  </E1KNVVM>
+  
+  <E1KNB1M SEGMENT="1">  <!-- Company Code Data -->
+    <BUKRS>1000</BUKRS>  <!-- Company Code -->
+    <AKONT>140000</AKONT>  <!-- Reconciliation Account -->
+    <ZUAWA>0001</ZUAWA>  <!-- Sort Key -->
+  </E1KNB1M>
+  
+  <E1KNVKM SEGMENT="1">  <!-- Contact Persons Data -->
+    <PARNR>000100</PARNR>  <!-- Contact Person Number -->
+    <NAMEV>Mr.</NAMEV>  <!-- Title (e.g., Mr., Mrs.) -->
+    <NAME1>John Doe</NAME1>  <!-- Contact Person Name -->
+    <TELF1>+1 555 987 6543</TELF1>  <!-- Contact Person Telephone Number -->
+    <SMTP_ADDR>john.doe@abclogistics.com</SMTP_ADDR>  <!-- Contact Person Email -->
+  </E1KNVKM>
+  
+  <E1KNVFM SEGMENT="1">  <!-- Freight and Shipping Data -->
+    <LIFNR>0000100001</LIFNR>  <!-- Freight Vendor Number -->
+    <VSART>01</VSART>  <!-- Shipping Type (e.g., 01 for Standard Shipping) -->
+    <LZONE>0001</LZONE>  <!-- Shipping Zone -->
+    <ROUTE>0001</ROUTE>  <!-- Shipping Route -->
+    <TRATY>01</TRATY>  <!-- Transportation Type -->
+  </E1KNVFM>
+  
+  <E1KNBAT SEGMENT="1">  <!-- Bank Details -->
+    <BANKL>00123456</BANKL>  <!-- Bank Key -->
+    <BANKS>US</BANKS>  <!-- Bank Country Key -->
+    <BANKN>123456789</BANKN>  <!-- Bank Account Number -->
+    <BVTYP>001</BVTYP>  <!-- Bank Account Type -->
+  </E1KNBAT>
+
+  <E1KNZ1M SEGMENT="1">  <!-- Customer Tax Data -->
+    <TAXKD>US1</TAXKD>  <!-- Tax Category -->
+    <TAXKN>123456789</TAXKN>  <!-- Tax Number -->
+  </E1KNZ1M>
+</IDOC>

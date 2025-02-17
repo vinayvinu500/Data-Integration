@@ -1,0 +1,43 @@
+mappings:
+  Record Date:
+    target: RECORD_DATE
+    transformation: .nan
+  Customer Number:
+    target: CUST_NO
+    transformation: uppercase
+  Customer Name:
+    target: CUST_NAME
+    transformation: uppercase
+  Customer City:
+    target: CUST_CITY
+    transformation: .nan
+  Customer Country:
+    target: CUST_COUNTRY
+    transformation: conditional_map
+    conditions:
+      US: United States
+      CAN: Canada
+  Postal Code:
+    target: CUST_ZIP
+    transformation: .nan
+  State:
+    target: CUST_STATE
+    transformation: .nan
+  Customer Address One:
+    target: CUST_ADDR1
+    transformation: .nan
+  Customer Address two:
+    target: CUST_ADDR2
+    transformation: .nan
+  Customer Address Three:
+    target: CUST_ADDR3
+    transformation: .nan
+  Customer Contact Code:
+    target: .nan
+    transformation: .nan
+  Customer Contact Details:
+    target: .nan
+    transformation: .nan
+  Location Type:
+    target: .nan
+    transformation: .nan

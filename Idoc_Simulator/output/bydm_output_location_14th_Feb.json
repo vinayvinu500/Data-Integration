@@ -1,0 +1,72 @@
+{
+    "E1KNA1M": [
+        {
+            "CUSTOMER_ID": "0000100000",
+            "COUNTRY": "GAURAV",
+            "NAME": "ABC Logistics Inc.",
+            "CITY": "New York",
+            "POSTAL_CODE": "10001",
+            "REGION": "New York",
+            "STREET_ADDRESS": "123 Main Street",
+            "TELEPHONE_NUMBER": "+1 555 123 4567",
+            "VENDOR_NUMBER": "0000100000",
+            "LANGUAGE": "English"
+        }
+    ],
+    "E1KNVVM": [
+        {
+            "SALES_ORGANIZATION": "1000",
+            "DISTRIBUTION_CHANNEL": "10",
+            "DIVISION": "00",
+            "E1KNVPM": [
+                {
+                    "PARTNER_ROLE": "AG",
+                    "PARTNER_ID": "0000100000"
+                },
+                {
+                    "PARTNER_ROLE": "WE",
+                    "PARTNER_ID": "0000100001"
+                }
+            ]
+        }
+    ],
+    "E1KNB1M": [
+        {
+            "COMPANY_CODE": "1000",
+            "RECONCILIATION_ACCOUNT": "140000",
+            "SORT_KEY": "0001"
+        }
+    ],
+    "E1KNVKM": [
+        {
+            "CONTACT_PERSON_NUMBER": "000100",
+            "TITLE": "Mr.",
+            "CONTACT_PERSON_NAME": "John Doe",
+            "CONTACT_PERSON_TELEPHONE_NUMBER": "+1 555 987 6543",
+            "CONTACT_PERSON_EMAIL": "john.doe@abclogistics.com"
+        }
+    ],
+    "E1KNVFM": [
+        {
+            "FREIGHT_VENDOR_NUMBER": "0000100001",
+            "SHIPPING_TYPE": "01",
+            "SHIPPING_ZONE": "0001",
+            "SHIPPING_ROUTE": "0001",
+            "TRANSPORTATION_TYPE": "01"
+        }
+    ],
+    "E1KNBAT": [
+        {
+            "BANK_KEY": "00123456",
+            "BANK_COUNTRY_KEY": "US",
+            "BANK_ACCOUNT_NUMBER": "123456789",
+            "BANK_ACCOUNT_TYPE": "001"
+        }
+    ],
+    "E1KNZ1M": [
+        {
+            "TAX_CATEGORY": "US1",
+            "TAX_NUMBER": "123456789"
+        }
+    ]
+}
