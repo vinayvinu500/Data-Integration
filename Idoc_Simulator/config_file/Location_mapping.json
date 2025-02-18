@@ -25,7 +25,12 @@
     "E1KNVVM": {
       "VKORG": { "target": "0.sales.organization", "validation": "NUMBER" },
       "VTWEG": { "target": "0.sales.channel", "validation": "NUMBER" },
-      "SPART": { "target": "0.sales.division", "validation": "NUMBER" }
+      "SPART": { "target": "0.sales.division", "validation": "NUMBER" },
+      "E1KNVPM": {
+        "PARVW": { "target": "0.sales.partnerFunctions.partySold", "validation": "TEXT" },
+        "KUNNR": { "target": "0.sales.partnerFunctions.partnerNumber", "validation": "NUMBER" },
+        "POST": { "target": "0.sales.partnerFunctions.partnerTarget", "validation": "TEXT" }
+      }
     },
     "E1KNB1M": {
       "BUKRS": { "target": "0.financial.companyCode", "validation": "NUMBER" },
