@@ -813,7 +813,11 @@
             "sales": {
                 "organization": "1000",
                 "channel": "10",
-                "division": "00"
+                "division": "00",
+                "partnerFunctions": {
+                    "partySold": "WE",
+                    "partnerNumber": "0000100001"
+                }
             },
             "financial": {
                 "companyCode": "1000",
