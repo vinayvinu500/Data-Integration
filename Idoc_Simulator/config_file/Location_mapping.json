@@ -1,9 +1,24 @@
 {
   "mappings": {
+    "EDI_DC40": {
+      "TABNAM": { "target": "header.tabnam", "validation": "TEXT" },
+      "MANDT": { "target": "header.mandt", "validation": "TEXT" },
+      "DOCNUM": { "target": "header.docnum", "validation": "TEXT" },
+      "DIRECT": { "target": "header.direct", "validation": "TEXT" },
+      "OUTMOD": { "target": "header.outmod", "validation": "TEXT" },
+      "IDOCTYP": { "target": "header.idoctyp", "validation": "TEXT" },
+      "MESTYP": { "target": "header.mestyp", "validation": "TEXT" },
+      "SNDPOR": { "target": "header.sndpor", "validation": "TEXT" },
+      "SNDPRT": { "target": "header.sndprt", "validation": "TEXT" },
+      "SNDPRN": { "target": "header.sndprn", "validation": "TEXT" },
+      "RCVPOR": { "target": "header.rcvpor", "validation": "TEXT" },
+      "RCVPRT": { "target": "header.rcvprt", "validation": "TEXT" },
+      "RCVPRN": { "target": "header.rcvprn", "validation": "TEXT" }
+    },
     "E1KNA1M": {
-      "KUNNR": { "target": "0.locationId", "validation": "NUMBER" },
+      "KUNNR": { "target": "location.0.locationId", "validation": "NUMBER" },
       "LAND1": {
-        "target": "0.basicLocation.address.countryCode",
+        "target": "location.0.basicLocation.address.countryCode",
         "validation": "TEXT",
         "transformation": {
           "type": "MAP",
@@ -13,53 +28,56 @@
           }
         }
       },
-      "NAME1": { "target": "0.parentParty.name", "validation": "TEXT" },
-      "ORT01": { "target": "0.basicLocation.address.city", "validation": "TEXT" },
-      "PSTLZ": { "target": "0.basicLocation.address.postalCode", "validation": "TEXT" },
-      "REGIO": { "target": "0.basicLocation.address.state", "validation": "TEXT" },
-      "STRAS": { "target": "0.basicLocation.address.streetAddressOne", "validation": "TEXT" },
-      "TELF1": { "target": "0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" },
-      "LIFNR": { "target": "0.basicLocation.shipFromLocations.shipFrom.0.primaryId", "validation": "NUMBER" },
-      "SPRAS": { "target": "0.basicLocation.description.languageCode", "validation": "TEXT" }
+      "NAME1": { "target": "location.0.parentParty.name", "validation": "TEXT" },
+      "ORT01": { "target": "location.0.basicLocation.address.city", "validation": "TEXT" },
+      "PSTLZ": { "target": "location.0.basicLocation.address.postalCode", "validation": "TEXT" },
+      "REGIO": { "target": "location.0.basicLocation.address.state", "validation": "TEXT" },
+      "STRAS": { "target": "location.0.basicLocation.address.streetAddressOne", "validation": "TEXT" },
+      "TELF1": { "target": "location.0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" },
+      "LIFNR": { "target": "location.0.basicLocation.shipFromLocations.shipFrom.0.primaryId", "validation": "NUMBER" },
+      "SPRAS": { "target": "location.0.basicLocation.description.languageCode", "validation": "TEXT" }
     },
     "E1KNVVM": {
-      "VKORG": { "target": "0.sales.organization", "validation": "NUMBER" },
-      "VTWEG": { "target": "0.sales.channel", "validation": "NUMBER" },
-      "SPART": { "target": "0.sales.division", "validation": "NUMBER" },
+      "VKORG": { "target": "location.0.sales.organization", "validation": "NUMBER" },
+      "VTWEG": { "target": "location.0.sales.channel", "validation": "NUMBER" },
+      "SPART": { "target": "location.0.sales.division", "validation": "NUMBER" },
       "E1KNVPM": {
-        "PARVW": { "target": "0.sales.partnerFunctions.partySold", "validation": "TEXT" },
-        "KUNNR": { "target": "0.sales.partnerFunctions.partnerNumber", "validation": "NUMBER" },
-        "POST": { "target": "0.sales.partnerFunctions.partnerTarget", "validation": "TEXT" }
+        "target": "location.0.sales.partnerFunctions",
+        "isArray": true,
+        "mapping": {
+          "PARVW": { "target": "partySold", "validation": "TEXT" },
+          "KUNNR": { "target": "partnerNumber", "validation": "NUMBER" }
+        }
       }
     },
     "E1KNB1M": {
-      "BUKRS": { "target": "0.financial.companyCode", "validation": "NUMBER" },
-      "AKONT": { "target": "0.financial.reconciliationAccount", "validation": "NUMBER" },
-      "ZUAWA": { "target": "0.financial.sortKey", "validation": "TEXT" }
+      "BUKRS": { "target": "location.0.financial.companyCode", "validation": "NUMBER" },
+      "AKONT": { "target": "location.0.financial.reconciliationAccount", "validation": "NUMBER" },
+      "ZUAWA": { "target": "location.0.financial.sortKey", "validation": "TEXT" }
     },
     "E1KNVKM": {
-      "PARNR": { "target": "0.basicLocation.contact.0.personName", "validation": "TEXT" },
-      "NAMEV": { "target": "0.basicLocation.contact.0.honorific", "validation": "TEXT" },
-      "NAME1": { "target": "0.basicLocation.contact.0.personFirstName", "validation": "TEXT" },
-      "TELF1": { "target": "0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" },
-      "SMTP_ADDR": { "target": "0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" }
+      "PARNR": { "target": "location.0.basicLocation.contact.0.personName", "validation": "TEXT" },
+      "NAMEV": { "target": "location.0.basicLocation.contact.0.honorific", "validation": "TEXT" },
+      "NAME1": { "target": "location.0.basicLocation.contact.0.personFirstName", "validation": "TEXT" },
+      "TELF1": { "target": "location.0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" },
+      "SMTP_ADDR": { "target": "location.0.basicLocation.contact.0.communicationChannel.0.communicationValue", "validation": "TEXT" }
     },
     "E1KNVFM": {
-      "LIFNR": { "target": "0.logisticDetails.carrier.primaryId", "validation": "NUMBER" },
-      "VSART": { "target": "0.logisticDetails.shipmentCreationRule", "validation": "TEXT" },
-      "LZONE": { "target": "0.logisticDetails.shippingZone", "validation": "TEXT" },
-      "ROUTE": { "target": "0.logisticDetails.shippingRoute", "validation": "TEXT" },
-      "TRATY": { "target": "0.logisticDetails.transportationType", "validation": "TEXT" }
+      "LIFNR": { "target": "location.0.logisticDetails.carrier.primaryId", "validation": "NUMBER" },
+      "VSART": { "target": "location.0.logisticDetails.shipmentCreationRule", "validation": "TEXT" },
+      "LZONE": { "target": "location.0.logisticDetails.shippingZone", "validation": "TEXT" },
+      "ROUTE": { "target": "location.0.logisticDetails.shippingRoute", "validation": "TEXT" },
+      "TRATY": { "target": "location.0.logisticDetails.transportationType", "validation": "TEXT" }
     },
     "E1KNBAT": {
-      "BANKL": { "target": "0.financial.bankDetails.bankKey", "validation": "TEXT" },
-      "BANKS": { "target": "0.financial.bankDetails.bankCountryKey", "validation": "TEXT" },
-      "BANKN": { "target": "0.financial.bankDetails.bankAccountNumber", "validation": "TEXT" },
-      "BVTYP": { "target": "0.financial.bankDetails.bankAccountType", "validation": "TEXT" }
+      "BANKL": { "target": "location.0.financial.bankDetails.bankKey", "validation": "TEXT" },
+      "BANKS": { "target": "location.0.financial.bankDetails.bankCountryKey", "validation": "TEXT" },
+      "BANKN": { "target": "location.0.financial.bankDetails.bankAccountNumber", "validation": "TEXT" },
+      "BVTYP": { "target": "location.0.financial.bankDetails.bankAccountType", "validation": "TEXT" }
     },
     "E1KNZ1M": {
-      "TAXKD": { "target": "0.financial.taxDetails.taxCategory", "validation": "TEXT" },
-      "TAXKN": { "target": "0.financial.taxDetails.taxNumber", "validation": "TEXT" }
+      "TAXKD": { "target": "location.0.financial.taxDetails.taxCategory", "validation": "TEXT" },
+      "TAXKN": { "target": "location.0.financial.taxDetails.taxNumber", "validation": "TEXT" }
     }
   }
 }

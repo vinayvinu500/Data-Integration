@@ -7,10 +7,12 @@ from pathlib import Path
 
 os.chdir('../')
 base_path = os.getcwd()
+
 # Configure logging
 log_file = f"logs/idoc_to_bydm_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(filename=log_file, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 # Load JSON configuration
 def load_json(file_path):
    try:
@@ -143,7 +145,7 @@ if __name__ == "__main__":
     idoc_xml_path = Path(base_path + "/source/Cust Locations IDOC.xml")
     config_json_path = Path(base_path + "/config_file/Location_mapping.json")
     template_json_path = Path(base_path + "/config_file/Location_Template.json")
-    bydm_json_path = Path(base_path + "/output/bydm_17th_Feb.json")
+    bydm_json_path = Path(base_path + "/output/BYDM_Format.json")
     
     logging.info("Starting IDoc to BYDM JSON conversion")
     

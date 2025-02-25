@@ -1490,7 +1490,7 @@
                     ]
                 },
                 "externalEntityId": {
-                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer’s original data/entity ID. It ensures traceability and accurate association between the customer’s data and the ingested records.",
+                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer\u00e2\u20ac\u2122s original data/entity ID. It ensures traceability and accurate association between the customer\u00e2\u20ac\u2122s data and the ingested records.",
                     "type": [
                         "string",
                         "null"
@@ -1509,49 +1509,77 @@
                     "$ref": "#/definitions/BasicLocationType"
                 },
                 "sales": {
-                "type": "object",
-                "properties": {
-                    "organization": { "type": "number" },
-                    "channel": { "type": "number" },
-                    "division": { "type": "number" },
-                    "partnerFunctions": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                        "partySold": { "type": "string" },
-                        "partnerNumber": { "type": "number" }
+                    "type": "object",
+                    "properties": {
+                        "organization": {
+                            "type": "number"
                         },
-                        "additionalProperties": false
-                    }
-                    }
-                },
-                "additionalProperties": false
+                        "channel": {
+                            "type": "number"
+                        },
+                        "division": {
+                            "type": "number"
+                        },
+                        "partnerFunctions": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "partySold": {
+                                        "type": "string"
+                                    },
+                                    "partnerNumber": {
+                                        "type": "number"
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "additionalProperties": false
                 },
                 "financial": {
                     "type": "object",
                     "properties": {
-                    "companyCode": { "type": "number" },
-                    "reconciliationAccount": { "type": "number" },
-                    "sortKey": { "type": "string" },
-                    "bankDetails": {
-                        "type": "object",
-                        "properties": {
-                        "bankKey": { "type": "string" },
-                        "bankCountryKey": { "type": "string" },
-                        "bankAccountNumber": { "type": "string" },
-                        "bankAccountType": { "type": "string" }
+                        "companyCode": {
+                            "type": "number"
                         },
-                        "additionalProperties": false
-                    },
-                    "taxDetails": {
-                        "type": "object",
-                        "properties": {
-                        "taxCategory": { "type": "string" },
-                        "taxNumber": { "type": "string" }
+                        "reconciliationAccount": {
+                            "type": "number"
                         },
-                        "additionalProperties": false
-                    }
+                        "sortKey": {
+                            "type": "string"
+                        },
+                        "bankDetails": {
+                            "type": "object",
+                            "properties": {
+                                "bankKey": {
+                                    "type": "string"
+                                },
+                                "bankCountryKey": {
+                                    "type": "string"
+                                },
+                                "bankAccountNumber": {
+                                    "type": "string"
+                                },
+                                "bankAccountType": {
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "taxDetails": {
+                            "type": "object",
+                            "properties": {
+                                "taxCategory": {
+                                    "type": "string"
+                                },
+                                "taxNumber": {
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
                     },
                     "additionalProperties": false
                 },
@@ -1638,7 +1666,7 @@
                     "maxLength": 100
                 },
                 "parentLocationId": {
-                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR’s can be grouped into a single load.",
+                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR\u00e2\u20ac\u2122s can be grouped into a single load.",
                     "type": [
                         "string",
                         "null"
@@ -2852,5 +2880,99 @@
             }
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "location": [
+        {
+            "locationId": "0000100000",
+            "basicLocation": {
+                "address": {
+                    "countryCode": "United States",
+                    "city": "New York",
+                    "postalCode": "10001",
+                    "state": "NY",
+                    "streetAddressOne": "123 Main Street"
+                },
+                "contact": [
+                    {
+                        "communicationChannel": [
+                            {
+                                "communicationValue": "john.doe@abclogistics.com"
+                            }
+                        ],
+                        "personName": "000100",
+                        "honorific": "Mr.",
+                        "personFirstName": "John Doe"
+                    }
+                ],
+                "shipFromLocations": {
+                    "shipFrom": [
+                        {
+                            "primaryId": "0000100000"
+                        }
+                    ]
+                },
+                "description": {
+                    "languageCode": "EN"
+                }
+            },
+            "parentParty": {
+                "name": "ABC Logistics Inc."
+            },
+            "sales": {
+                "organization": "1000",
+                "channel": "10",
+                "division": "00",
+                "partnerFunctions": [
+                    {
+                        "partySold": "AG",
+                        "partnerNumber": "0000100000"
+                    },
+                    {
+                        "partySold": "WE",
+                        "partnerNumber": "0000100001"
+                    }
+                ]
+            },
+            "financial": {
+                "companyCode": "1000",
+                "reconciliationAccount": "140000",
+                "sortKey": "0001",
+                "bankDetails": {
+                    "bankKey": "00123456",
+                    "bankCountryKey": "US",
+                    "bankAccountNumber": "123456789",
+                    "bankAccountType": "001"
+                },
+                "taxDetails": {
+                    "taxCategory": "US1",
+                    "taxNumber": "123456789"
+                }
+            },
+            "logisticDetails": {
+                "carrier": {
+                    "primaryId": "0000100001"
+                },
+                "shipmentCreationRule": "01",
+                "shippingZone": "0001",
+                "shippingRoute": "0001",
+                "transportationType": "01"
+            }
+        }
+    ],
+    "unmappedSegments": [],
+    "header": {
+        "tabnam": "EDI_DC40",
+        "mandt": "100",
+        "docnum": "00000000000098765432",
+        "direct": "2",
+        "outmod": "2",
+        "idoctyp": "DEBMAS06",
+        "mestyp": "DEBMAS",
+        "sndpor": "SAPECC",
+        "sndprt": "LS",
+        "sndprn": "SAP_SYSTEM",
+        "rcvpor": "BY_TMS",
+        "rcvprt": "LS",
+        "rcvprn": "BY_TMS_SYSTEM"
+    }
 }

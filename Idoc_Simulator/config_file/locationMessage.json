@@ -1,0 +1,72 @@
+{
+  "header": {
+    "messageId": "",
+    "messageVersion": "BYDM 2020.2.0",
+    "creationDateAndTime": ""
+  },
+  "location": [
+    {
+      "locationId": "",
+      "parentParty": {},
+      "basicLocation": {
+        "address": {
+          "countryCode": "",
+          "city": "",
+          "postalCode": "",
+          "state": "",
+          "streetAddressOne": ""
+        },
+        "contact": [
+          {
+            "communicationChannel": [
+              {
+                "communicationValue": ""
+              }
+            ]
+          }
+        ],
+        "description": {
+          "languageCode": ""
+        },
+        "shipFromLocations": {
+          "shipFrom": [
+            {
+              "primaryId": ""
+            }
+          ]
+        }
+      },
+      "sales": {
+        "organization": 0,
+        "channel": 0,
+        "division": 0,
+        "partnerFunctions": [] 
+      },
+      "financial": {
+        "companyCode": 0,
+        "reconciliationAccount": 0,
+        "sortKey": "",
+        "bankDetails": {
+          "bankKey": "",
+          "bankCountryKey": "",
+          "bankAccountNumber": "",
+          "bankAccountType": ""
+        },
+        "taxDetails": {
+          "taxCategory": "",
+          "taxNumber": ""
+        }
+      },
+      "operatingHours": {},
+      "logisticDetails": {
+        "carrier": {
+          "primaryId": ""
+        },
+        "shipmentCreationRule": "",
+        "shippingZone": "",
+        "shippingRoute": "",
+        "transportationType": ""
+      }
+    }
+  ]
+}
