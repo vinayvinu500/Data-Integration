@@ -1490,7 +1490,7 @@
                     ]
                 },
                 "externalEntityId": {
-                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer\u00e2\u20ac\u2122s original data/entity ID. It ensures traceability and accurate association between the customer\u00e2\u20ac\u2122s data and the ingested records.",
+                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer\u2019s original data/entity ID. It ensures traceability and accurate association between the customer\u2019s data and the ingested records.",
                     "type": [
                         "string",
                         "null"
@@ -1666,7 +1666,7 @@
                     "maxLength": 100
                 },
                 "parentLocationId": {
-                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR\u00e2\u20ac\u2122s can be grouped into a single load.",
+                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR\u2019s can be grouped into a single load.",
                     "type": [
                         "string",
                         "null"
@@ -2959,20 +2959,76 @@
             }
         }
     ],
-    "unmappedSegments": [],
-    "header": {
-        "tabnam": "EDI_DC40",
-        "mandt": "100",
-        "docnum": "00000000000098765432",
-        "direct": "2",
-        "outmod": "2",
-        "idoctyp": "DEBMAS06",
-        "mestyp": "DEBMAS",
-        "sndpor": "SAPECC",
-        "sndprt": "LS",
-        "sndprn": "SAP_SYSTEM",
-        "rcvpor": "BY_TMS",
-        "rcvprt": "LS",
-        "rcvprn": "BY_TMS_SYSTEM"
+    "unmappedSegments": [
+        {
+            "EDI_DC40": {
+                "EDI_DC40": {
+                    "TABNAM": "EDI_DC40",
+                    "MANDT": "100",
+                    "DOCNUM": "00000000000098765432",
+                    "DIRECT": "2",
+                    "OUTMOD": "2",
+                    "IDOCTYP": "DEBMAS06",
+                    "MESTYP": "DEBMAS",
+                    "SNDPOR": "SAPECC",
+                    "SNDPRT": "LS",
+                    "SNDPRN": "SAP_SYSTEM",
+                    "RCVPOR": "BY_TMS",
+                    "RCVPRT": "LS",
+                    "RCVPRN": "BY_TMS_SYSTEM",
+                    "@SEGMENT": "1"
+                }
+            }
+        }
+    ],
+    "unmappedSummary": {
+        "EDI_DC40": 1
+    },
+    "mappingUsage": {
+        "location.0.locationId": 1,
+        "location.0.basicLocation.address.countryCode": 1,
+        "location.0.parentParty.name": 1,
+        "location.0.basicLocation.address.city": 1,
+        "location.0.basicLocation.address.postalCode": 1,
+        "location.0.basicLocation.address.state": 1,
+        "location.0.basicLocation.address.streetAddressOne": 1,
+        "location.0.basicLocation.contact.0.communicationChannel.0.communicationValue": 3,
+        "location.0.basicLocation.shipFromLocations.shipFrom.0.primaryId": 1,
+        "location.0.basicLocation.description.languageCode": 1,
+        "location.0.sales.organization": 1,
+        "location.0.sales.channel": 1,
+        "location.0.sales.division": 1,
+        "location.0.sales.partnerFunctions.partySold": 2,
+        "location.0.sales.partnerFunctions.partnerNumber": 2,
+        "location.0.financial.companyCode": 1,
+        "location.0.financial.reconciliationAccount": 1,
+        "location.0.financial.sortKey": 1,
+        "location.0.basicLocation.contact.0.personName": 1,
+        "location.0.basicLocation.contact.0.honorific": 1,
+        "location.0.basicLocation.contact.0.personFirstName": 1,
+        "location.0.logisticDetails.carrier.primaryId": 1,
+        "location.0.logisticDetails.shipmentCreationRule": 1,
+        "location.0.logisticDetails.shippingZone": 1,
+        "location.0.logisticDetails.shippingRoute": 1,
+        "location.0.logisticDetails.transportationType": 1,
+        "location.0.financial.bankDetails.bankKey": 1,
+        "location.0.financial.bankDetails.bankCountryKey": 1,
+        "location.0.financial.bankDetails.bankAccountNumber": 1,
+        "location.0.financial.bankDetails.bankAccountType": 1,
+        "location.0.financial.taxDetails.taxCategory": 1,
+        "location.0.financial.taxDetails.taxNumber": 1
+    },
+    "llmMappingSuggestions": {
+        "EDI_DC40": "<think>\nAlright, I need to help map the given XML segment into a BYDM structure using typical SAP IDoc elements. The provided JSON has keys like \"TABNAM\", \"MANDT\", and others. \n\nFirst, I should identify which fields correspond to standard SAP IDoc elements. For example, \"TABNAM\" is usually \"EDI_DC40\", so that can map directly. \"MANDT\" is the message type, which would be \"DEBMAS06\".\n\nNext, looking at the structure, I think it's a DEBMAS segment with a BYDM subsegment. The fields like \"DOCNUM\" might correspond to \"DOC_NUM\". \"DIRECT\" and \"OUTMOD\" could map to \"DIS_TO\" and \"OUT_MOD\" respectively.\n\nI also notice some fields like \"IDOCTYP\", which is the document type, so that would be \"DOCTYPE\". The sender and receiver information can be mapped using standard SAP field mappings like \"SND_POR\", \"RCV_POR\", etc.\n\nThe \"@SEGMENT\" field might need to be handled carefully since it's an internal tag. I'll map it to \"SEG_NO\".\n\nPutting this all together, I'll structure the JSON with a top-level \"DEBMAS\" object containing the subsegments like \"BYDM\". Each subsegment will have their respective fields mapped appropriately.\n\nI should ensure that each key in the subsegment matches typical SAP IDoc field names. For example, \"DOC_NUM\", \"DIS_TO\", and \"OUT_MOD\" are standard for document numbers, direction, and output mode.\n\nDouble-checking to make sure all fields from the original JSON are correctly translated into their corresponding IDoc elements without missing any.\n\nSo, the final structure should have DEBMAS as the top-level with BYDM containing all necessary subfields mapped properly.\n</think>\n\nTo map the given XML segment to a BYDM structure using typical SAP IDoc elements, we can create a JSON configuration that defines the mapping. Here's the suggested JSON snippet:\n\n```json\n{\n  \"DEBMAS\": {\n    \"BYDM\": {\n      \"TABNAM\": \"EDIDC40\",\n      \"MANDT\": \"100\",\n      \"DOCNUM\": \"DOC_NUM\",\n      \"DIRECT\": \"DIS_TO\",\n      \"OUTMOD\": \"OUT_MOD\",\n      \"IDOCTYP\": \"DOCTYPE\",\n      \"MESTYP\": \"ME_TYPE\",\n      \"SNDPOR\": \"SEND_POR\",\n      \"SNDPRT\": \"SEND_PRD\",\n      \"SNDPRN\": \"SEND_PRN\",\n      \"RCVPOR\": \"RCV_POR\",\n      \"RCVPRT\": \"RCV_PRD\",\n      \"RCVPRN\": \"RCV_PRN\",\n      \"@SEGMENT\": \"SEG_NO\"\n    }\n  }\n}\n```\n\nThis JSON mapping configures the XML structure into a BYDM segment with corresponding SAP IDoc fields."
+    },
+    "sapMetadata": {
+        "EDI_DC40": {
+            "expectedFields": [
+                "FIELD1",
+                "FIELD2",
+                "FIELD3"
+            ],
+            "description": "Metadata for EDI_DC40 from SAP system."
+        }
     }
 }
