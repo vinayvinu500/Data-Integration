@@ -1,56 +1,53 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://blueyonder.com/bydm/location",
-    "title": "location",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
     "definitions": {
         "AdditionalPartyIdentificationType": {
-            "required": [
-                "value"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "A party identifier that is in addition to the GLN.",
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
                 "typeCode": {
                     "description": "Identification of a party by use of a code in addition to the Global Location Number.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "value": {
+                    "description": "A party identifier that is in addition to the GLN.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "AdditionalPartyIdentificationTypeCode": {
             "type": "string"
         },
         "AllowDropOffEnumerationType": {
-            "type": "string",
             "enum": [
                 "D_NULL",
                 "D_ALLOWED",
                 "D_CONDITIONAL",
                 "D_NOT_ALLOWED"
-            ]
+            ],
+            "type": "string"
         },
         "AllowPickUpEnumerationType": {
-            "type": "string",
             "enum": [
                 "P_NULL",
                 "P_ALLOWED",
                 "P_CONDITIONAL",
                 "P_NOT_ALLOWED"
-            ]
+            ],
+            "type": "string"
         },
         "AncestryType": {
-            "required": [
-                "memberId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "actionCode": {
                     "$ref": "#/definitions/SegmentActionEnumerationType"
@@ -81,85 +78,98 @@
                     ]
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "memberId"
+            ],
+            "type": "object"
         },
         "AssociatedShipFromType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "isManagedByTransportation": {
-                    "description": "Location is managed by transportation system.",
-                    "type": "boolean"
-                },
                 "allLocations": {
                     "description": "Location can ship to / ship from all locations.",
+                    "type": "boolean"
+                },
+                "isManagedByTransportation": {
+                    "description": "Location is managed by transportation system.",
                     "type": "boolean"
                 },
                 "shipFrom": {
                     "description": "Basic location receives from these locations.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/ShipFromType"
-                    }
+                    },
+                    "type": "array"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "AssociatedShipToType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "isManagedByTransportation": {
-                    "description": "Location is managed by transportation system.",
-                    "type": "boolean"
-                },
                 "allLocations": {
                     "description": "Location can ship to / ship from all locations.",
                     "type": "boolean"
                 },
+                "isManagedByTransportation": {
+                    "description": "Location is managed by transportation system.",
+                    "type": "boolean"
+                },
                 "shipTo": {
                     "description": "Basic location shipping to these locations.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/ShipToType"
-                    }
+                    },
+                    "type": "array"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "BasicLocationType": {
-            "nullable": true,
-            "type": "object",
+            "additionalProperties": false,
             "dependencies": {
-                "extensions": {
-                    "not": {
-                        "required": [
-                            "avpList"
-                        ]
-                    }
-                },
                 "avpList": {
                     "not": {
                         "required": [
                             "extensions"
                         ]
                     }
+                },
+                "extensions": {
+                    "not": {
+                        "required": [
+                            "avpList"
+                        ]
+                    }
                 }
             },
+            "nullable": true,
             "properties": {
-                "additionalPartyId": {
-                    "description": "Identifier of the party or location, specified in addition to the GLN.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/AdditionalPartyIdentificationType"
-                    }
-                },
-                "sublocationId": {
-                    "description": "Text further specifying the exact logistic location. For example: dock door, department, building.",
+                "accountGroup": {
+                    "description": "CustomerAccountGroup.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "additionalPartyId": {
+                    "description": "Identifier of the party or location, specified in addition to the GLN.",
+                    "items": {
+                        "$ref": "#/definitions/AdditionalPartyIdentificationType"
+                    },
+                    "type": "array"
+                },
+                "address": {
+                    "$ref": "#/definitions/LocationAddressType"
+                },
+                "avpList": {
+                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
+                    "items": {
+                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
+                    },
+                    "type": "array"
                 },
                 "banner": {
                     "description": "The term for a subsidiary used by an enterprise.",
@@ -168,42 +178,47 @@
                         "null"
                     ]
                 },
-                "locationName": {
-                    "description": "The user friendly name of the location.",
+                "contact": {
+                    "description": "Information on an individual or department acting as point of contact for an organization.",
+                    "items": {
+                        "$ref": "#/definitions/LocationContactType"
+                    },
+                    "type": "array"
+                },
+                "deliveryPostalCode": {
+                    "description": "The postal code to which the orders from this location can be delivered.",
+                    "items": {
+                        "maxLength": 80,
+                        "minLength": 1,
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
+                    ]
                 },
                 "description": {
                     "$ref": "#/definitions/DescriptionType"
                 },
-                "address": {
-                    "$ref": "#/definitions/LocationAddressType"
+                "extensions": {
+                    "$ref": "#/definitions/ExtensionType"
                 },
-                "contact": {
-                    "description": "Information on an individual or department acting as point of contact for an organization.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationContactType"
-                    }
+                "isCrossDock": {
+                    "description": "This attribute will define if Location is Cross Dock also.",
+                    "type": "boolean"
                 },
-                "organisationName": {
-                    "description": "The official name of the organisation.\n\n\n",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
+                "isResidentialAddress": {
+                    "description": "Indicates whether the address is a residential address. If omitted from input, false will be assumed.",
+                    "type": "boolean"
                 },
-                "operatingHours": {
-                    "$ref": "#/definitions/OperatingHours"
+                "isTemporaryAddress": {
+                    "description": "Indicates that a an address is intended for limited use, and not for long-term management by the system.",
+                    "type": "boolean"
                 },
-                "locationTypeCode": {
-                    "description": "Physical type of location, such as warehouse or store.",
+                "locationName": {
+                    "description": "The user friendly name of the location.",
+                    "maxLength": 80,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
@@ -216,98 +231,83 @@
                         "null"
                     ]
                 },
-                "accountGroup": {
-                    "description": "CustomerAccountGroup.",
+                "locationTypeCode": {
+                    "description": "Physical type of location, such as warehouse or store.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "isCrossDock": {
-                    "description": "This attribute will define if Location is Cross Dock also.",
-                    "type": "boolean"
+                "operatingHours": {
+                    "$ref": "#/definitions/OperatingHours"
                 },
-                "shipToLocations": {
-                    "$ref": "#/definitions/AssociatedShipToType"
+                "organisationName": {
+                    "description": "The official name of the organisation.\n\n\n",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "shipFromLocations": {
                     "$ref": "#/definitions/AssociatedShipFromType"
                 },
+                "shipToLocations": {
+                    "$ref": "#/definitions/AssociatedShipToType"
+                },
                 "status": {
                     "description": "Information about when a location is active/inactive.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/LocationStatusType"
-                    }
+                    },
+                    "type": "array"
                 },
-                "deliveryPostalCode": {
-                    "description": "The postal code to which the orders from this location can be delivered.",
+                "sublocationId": {
+                    "description": "Text further specifying the exact logistic location. For example: dock door, department, building.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
-                    ],
-                    "items": {
-                        "type": "string",
-                        "maxLength": 80,
-                        "minLength": 1
-                    }
-                },
-                "isTemporaryAddress": {
-                    "description": "Indicates that a an address is intended for limited use, and not for long-term management by the system.",
-                    "type": "boolean"
-                },
-                "isResidentialAddress": {
-                    "description": "Indicates whether the address is a residential address. If omitted from input, false will be assumed.",
-                    "type": "boolean"
-                },
-                "extensions": {
-                    "$ref": "#/definitions/ExtensionType"
-                },
-                "avpList": {
-                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
-                    }
+                    ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "CommunicationChannelCode": {
             "type": "string"
         },
         "CommunicationChannelType": {
-            "required": [
-                "communicationChannelCode",
-                "communicationValue"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "communicationChannelCode": {
                     "description": "Code specifying the type of communication channel, for example TELEPHONE.",
                     "type": "string"
                 },
-                "communicationValue": {
-                    "description": "Text identifying the endpoint for the communication channel, for example a telephone number or an e-mail address.",
-                    "type": "string",
-                    "maxLength": 200,
-                    "minLength": 1
-                },
                 "communicationChannelName": {
                     "description": "The name of a specific communication channel for example Facebook, Twitter, etc.",
+                    "maxLength": 200,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
+                    ]
+                },
+                "communicationValue": {
+                    "description": "Text identifying the endpoint for the communication channel, for example a telephone number or an e-mail address.",
                     "maxLength": 200,
-                    "minLength": 1
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "communicationChannelCode",
+                "communicationValue"
+            ],
+            "type": "object"
         },
         "CompetitionType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
                 "competitionName": {
                     "description": "Name of the competitor.",
@@ -320,7 +320,7 @@
                     "$ref": "#/definitions/MeasurementType"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "ConsignmentTrackingCode": {
             "type": "string"
@@ -335,7 +335,6 @@
             "type": "string"
         },
         "DayOfTheWeekEnumerationType": {
-            "type": "string",
             "enum": [
                 "FRIDAY",
                 "MONDAY",
@@ -344,72 +343,60 @@
                 "THURSDAY",
                 "TUESDAY",
                 "WEDNESDAY"
-            ]
+            ],
+            "type": "string"
         },
         "DemurrageType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
                 "containerType": {
                     "description": "A term representing the general business terminology that describes the shipping container.",
+                    "maxLength": 128,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 128,
-                    "minLength": 1
-                },
-                "freeHoldDays": {
-                    "description": "The maximum number of days a port authority allows the container to be held at the port before demurrage charges begin assessed.",
-                    "type": "number"
+                    ]
                 },
                 "demurrageChargeAmountPerDay": {
                     "description": "The amount that will be charged to the carrier by the port authority for holding the shipping container after the free hold period is exceeded.",
                     "type": "number"
+                },
+                "freeHoldDays": {
+                    "description": "The maximum number of days a port authority allows the container to be held at the port before demurrage charges begin assessed.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "Description80Type": {
-            "required": [
-                "value"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "A string of no more than 80 characters in a specified language.",
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
                 "languageCode": {
                     "description": "A code representing the language used in the description.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "value": {
+                    "description": "A string of no more than 80 characters in a specified language.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
-        },
-        "DescriptionType": {
             "required": [
                 "value"
             ],
-            "type": "object",
+            "type": "object"
+        },
+        "DescriptionType": {
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "The text of description.",
-                    "type": "string",
-                    "maxLength": 500,
-                    "minLength": 1
-                },
-                "languageCode": {
-                    "description": "The language of the description.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
                 },
                 "descriptionType": {
                     "description": "Type of description, eg Long, Short, Mobile, etc.",
@@ -418,23 +405,40 @@
                         "null"
                     ]
                 },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                "languageCode": {
+                    "description": "The language of the description.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The text of description.",
+                    "maxLength": 500,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "DespatchAdviceRestrictionCode": {
             "type": "string"
         },
         "DistributionCenterDetailsType": {
-            "required": [
-                "distributionCenterId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "actionCode": {
                     "$ref": "#/definitions/SegmentActionEnumerationType"
+                },
+                "billToCustomer": {
+                    "description": "The party that will be responsible for any charges that are due as a result of services provided to the store.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "distributionCenterId": {
                     "description": "The set of characters that uniquely references the facility that provides replenishment services to the store location.",
@@ -451,6 +455,16 @@
                     "description": "A number representing the relative importance of servicing this store in distribution operations.",
                     "type": "integer"
                 },
+                "routeSchedule": {
+                    "$ref": "#/definitions/RouteScheduleType"
+                },
+                "routeToCustomer": {
+                    "description": "The geographic location through which deliveries to this store should be transported.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "storeCategory": {
                     "description": "A term used by the business to identify the operational characteristics of the store.",
                     "type": [
@@ -465,48 +479,35 @@
                         "null"
                     ]
                 },
-                "routeToCustomer": {
-                    "description": "The geographic location through which deliveries to this store should be transported.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "billToCustomer": {
-                    "description": "The party that will be responsible for any charges that are due as a result of services provided to the store.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "storeStagingLocation": {
                     "$ref": "#/definitions/StoreStagingLocationType"
-                },
-                "routeSchedule": {
-                    "$ref": "#/definitions/RouteScheduleType"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "distributionCenterId"
+            ],
+            "type": "object"
         },
         "DocumentActionEnumerationType": {
-            "type": "string",
             "enum": [
                 "ADD",
                 "CHANGE_BY_REFRESH",
                 "DELETE",
                 "PARTIAL_CHANGE",
                 "CANCEL"
-            ]
+            ],
+            "type": "string"
         },
         "DocumentStatusEnumerationType": {
-            "type": "string",
             "enum": [
                 "ADDITIONAL_TRANSMISSION",
                 "COPY",
                 "ORIGINAL"
-            ]
+            ],
+            "type": "string"
         },
         "EcomStringAttributeValuePairListType": {
+            "additionalProperties": false,
             "anyOf": [
                 {
                     "required": [
@@ -534,8 +535,46 @@
                 }
             ],
             "nullable": true,
-            "type": "object",
             "properties": {
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                },
+                "binaryValue": {
+                    "format": "binary",
+                    "type": "string"
+                },
+                "date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "dateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the temporary attribute being introduced as an attribute value pair.",
+                    "maxLength": 70,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "qualifierCodeList": {
+                    "description": "The code list qualifying the temporary attribute",
+                    "maxLength": 70,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qualifierCodeName": {
+                    "description": "The value of the attribute qualifier associated with the codeListName",
+                    "maxLength": 70,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "value": {
                     "description": "An attribute value pair that allows for a string and optionally an associated qualifier (e.g. Unit of Measure).",
                     "type": [
@@ -544,54 +583,12 @@
                         "boolean",
                         "null"
                     ]
-                },
-                "binaryValue": {
-                    "type": "string",
-                    "format": "binary"
-                },
-                "date": {
-                    "type": "string",
-                    "format": "date"
-                },
-                "dateTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "name": {
-                    "description": "The name of the temporary attribute being introduced as an attribute value pair.",
-                    "type": "string",
-                    "maxLength": 70,
-                    "minLength": 1
-                },
-                "qualifierCodeName": {
-                    "description": "The value of the attribute qualifier associated with the codeListName",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 70,
-                    "minLength": 1
-                },
-                "qualifierCodeList": {
-                    "description": "The code list qualifying the temporary attribute",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 70,
-                    "minLength": 1
-                },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "ExtensionFieldWithQualifierType": {
-            "type": "object",
-            "required": [
-                "value"
-            ],
+            "additionalProperties": false,
             "properties": {
                 "qualifierCodeList": {
                     "type": "string"
@@ -608,10 +605,12 @@
                     ]
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "ExtensionType": {
-            "type": "object",
             "additionalProperties": {
                 "oneOf": [
                     {
@@ -626,31 +625,22 @@
                         "$ref": "#/definitions/ExtensionFieldWithQualifierType"
                     }
                 ]
-            }
+            },
+            "type": "object"
         },
         "HeaderType": {
-            "required": [
-                "messageVersion",
-                "messageId",
-                "type",
-                "creationDateAndTime"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "sender": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "creationDateAndTime": {
+                    "format": "date-time",
+                    "type": "string"
                 },
-                "receiver": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "string"
-                    }
+                "messageId": {
+                    "type": "string"
+                },
+                "messageVersion": {
+                    "description": "Message specific named version, for example 'BYDM 2020.2.0'.",
+                    "type": "string"
                 },
                 "model": {
                     "description": "Model. Default value is 'BYDM'.",
@@ -659,19 +649,20 @@
                         "null"
                     ]
                 },
-                "messageVersion": {
-                    "description": "Message specific named version, for example 'BYDM 2020.2.0'.",
-                    "type": "string"
+                "receiver": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
-                "messageId": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "creationDateAndTime": {
-                    "type": "string",
-                    "format": "date-time"
+                "sender": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "testMessage": {
                     "description": "When value is 'true' then message is considered to be a test message. Check adapter documentation to see if it properly supports test messages",
@@ -679,20 +670,29 @@
                         "string",
                         "null"
                     ]
+                },
+                "type": {
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "messageVersion",
+                "messageId",
+                "type",
+                "creationDateAndTime"
+            ],
+            "type": "object"
         },
         "HierarchyInformationType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "memberName": {
-                    "description": "The term by which the member is commonly known by the business.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "ancestry": {
+                    "description": "Information about the ancestry for this item. The requirement for ancestry content will vary based on the target applications in use, i.e., some applications require only the immediate ancestor, while other applications require the full ancestry to be sent for each member. If the full ancestry is required, ancestors must be loaded starting with the immediate ancestor and then in ascending order. If ancestors in more than one hierarchy need to be sent in the same document, all ancestors in one hierarchy should be sent before starting the ancestors in the next hierarchy.",
+                    "items": {
+                        "$ref": "#/definitions/AncestryType"
+                    },
+                    "type": "array"
                 },
                 "hierarchyId": {
                     "description": "The hierarchy the member belongs to. If not passed, the value will default to the dimension's primary hierarchy. For example, if the hierarchyIdentifier is not passed for a member in the Item or ItemHiearchyLevelMember message, the hierarchyIdentifier will default to the primary hierarchy in the ITEM dimension.",
@@ -712,15 +712,15 @@
                     "description": "The hierarchy level number that the member belongs to. This element is not required.",
                     "type": "integer"
                 },
-                "ancestry": {
-                    "description": "Information about the ancestry for this item. The requirement for ancestry content will vary based on the target applications in use, i.e., some applications require only the immediate ancestor, while other applications require the full ancestry to be sent for each member. If the full ancestry is required, ancestors must be loaded starting with the immediate ancestor and then in ascending order. If ancestors in more than one hierarchy need to be sent in the same document, all ancestors in one hierarchy should be sent before starting the ancestors in the next hierarchy.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/AncestryType"
-                    }
+                "memberName": {
+                    "description": "The term by which the member is commonly known by the business.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "InventoryStatusCode": {
             "type": "string"
@@ -729,140 +729,33 @@
             "type": "string"
         },
         "LoadingCodeType": {
-            "type": "string",
             "enum": [
                 "LIVE_LOAD",
                 "LOAD_ON_HOURS",
                 "LOAD_OFF_HOURS"
-            ]
+            ],
+            "type": "string"
         },
         "LoadingUnloadingTimeCalculationCodeType": {
-            "type": "string",
             "enum": [
                 "EQUIPMENT_OVERRIDES",
                 "LOCATION_OVERRIDES",
                 "DOCK_OVERRIDES",
                 "MAXIMUM",
                 "ACCUMULATE"
-            ]
+            ],
+            "type": "string"
         },
         "LocationAddressType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "city": {
-                    "description": "Text specifying the name of the city.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
-                },
-                "cityCode": {
-                    "description": "Identifier for a city, expressed as a short code rather than the full name.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "countryCode": {
-                    "description": "Code specifying a country. Allowed code values are specified in GS1 Code List CountryCode.",
+                "addressDescription": {
+                    "description": "A description for this address.",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
-                "countryName": {
-                    "description": "The word or term by which the country is referenced in general communication.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 50,
-                    "minLength": 1
-                },
-                "currencyOfPartyCode": {
-                    "description": "Code specifying a currency. Allowed code values are specified in GS1 Code List CurrencyCode.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "languageOfThePartyCode": {
-                    "description": "Code specifying a language. Allowed code values are specified in GS1 Code List LanguageCode.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "The name of the party expressed in text.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
-                },
-                "pOBoxNumber": {
-                    "description": "The number that identifies a PO box. A PO box is a box in a post office or other postal service location assigned to an organization where postal items may be kept.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "postalCode": {
-                    "description": "Text specifying the postal code for an address.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "state": {
-                    "description": "One of the constituent units of a nation having a federal government.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "streetAddressOne": {
-                    "description": "The first free form line of an address. This first part is printed on paper as the first line below the name. For example, the name of the street and the number in the street or the name of a building.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
-                },
-                "streetAddressTwo": {
-                    "description": "The second free form line of an address. This second part is printed on paper as the second line below the name. The second free form line complements the first free form line to locate the party e.g. floor number, name of a building, suite number or",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
-                },
-                "streetAddressThree": {
-                    "description": "The third free form line of an address. This third part is printed on paper as the third line below the name. The third free form line complements the first and second free form lines where necessary.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 200,
-                    "minLength": 1
-                },
-                "geographicalCoordinates": {
-                    "$ref": "#/definitions/LocationGeographicalCoordinatesType"
                 },
                 "addressDistrict": {
                     "description": "The district of the address.",
@@ -870,15 +763,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "regionName": {
-                    "description": "The description of broad category of geographical areas or region associated to this location, e.g. North, South.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 50,
-                    "minLength": 1
                 },
                 "addressRegion": {
                     "description": "The region of the address e.g., Northern Europe OR Northern California.",
@@ -894,25 +778,141 @@
                         "null"
                     ]
                 },
-                "addressDescription": {
-                    "description": "A description for this address.",
+                "city": {
+                    "description": "Text specifying the name of the city.",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cityCode": {
+                    "description": "Identifier for a city, expressed as a short code rather than the full name.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "countryCode": {
+                    "description": "Code specifying a country. Allowed code values are specified in GS1 Code List CountryCode.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "countryName": {
+                    "description": "The word or term by which the country is referenced in general communication.",
+                    "maxLength": 50,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "currencyOfPartyCode": {
+                    "description": "Code specifying a currency. Allowed code values are specified in GS1 Code List CurrencyCode.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "geographicalCoordinates": {
+                    "$ref": "#/definitions/LocationGeographicalCoordinatesType"
+                },
+                "languageOfThePartyCode": {
+                    "description": "Code specifying a language. Allowed code values are specified in GS1 Code List LanguageCode.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the party expressed in text.",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pOBoxNumber": {
+                    "description": "The number that identifies a PO box. A PO box is a box in a post office or other postal service location assigned to an organization where postal items may be kept.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "postalCode": {
+                    "description": "Text specifying the postal code for an address.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "regionName": {
+                    "description": "The description of broad category of geographical areas or region associated to this location, e.g. North, South.",
+                    "maxLength": 50,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "state": {
+                    "description": "One of the constituent units of a nation having a federal government.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "streetAddressOne": {
+                    "description": "The first free form line of an address. This first part is printed on paper as the first line below the name. For example, the name of the street and the number in the street or the name of a building.",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "streetAddressThree": {
+                    "description": "The third free form line of an address. This third part is printed on paper as the third line below the name. The third free form line complements the first and second free form lines where necessary.",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "streetAddressTwo": {
+                    "description": "The second free form line of an address. This second part is printed on paper as the second line below the name. The second free form line complements the first free form line to locate the party e.g. floor number, name of a building, suite number or",
+                    "maxLength": 200,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationConsignmentItemOverrideType": {
-            "required": [
-                "itemId",
-                "locationId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "itemId": {
                     "description": "The unique identification of this item.",
+                    "type": "string"
+                },
+                "locationId": {
+                    "description": "The location in which the work order was performed.",
                     "type": "string"
                 },
                 "ownerOfTradeItem": {
@@ -921,58 +921,27 @@
                         "string",
                         "null"
                     ]
-                },
-                "locationId": {
-                    "description": "The location in which the work order was performed.",
-                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "itemId",
+                "locationId"
+            ],
+            "type": "object"
         },
         "LocationContactType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "contactTypeCode": {
-                    "description": "Code specifying the function or role of a contact.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "personName": {
-                    "description": "The name of the individual that can be contacted to provide additional information",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 70,
-                    "minLength": 1
-                },
-                "departmentName": {
-                    "description": "The name of the department that can be contacted to provide additional information",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 70,
-                    "minLength": 1
-                },
-                "jobTitle": {
-                    "description": "The job title of the person that can be contacted.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 70,
-                    "minLength": 1
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
                 },
                 "communicationChannel": {
                     "description": "The channel or manner in which a communication can be made, such as telephone or email.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/CommunicationChannelType"
-                    }
+                    },
+                    "type": "array"
                 },
                 "companyName": {
                     "description": "The name of the company of this contact.",
@@ -981,27 +950,21 @@
                         "null"
                     ]
                 },
-                "personFirstName": {
-                    "description": "An individual's first name.",
+                "contactTypeCode": {
+                    "description": "Code specifying the function or role of a contact.",
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 30,
-                    "minLength": 1
+                    ]
                 },
-                "personLastName": {
-                    "description": "An individual's last name.",
+                "departmentName": {
+                    "description": "The name of the department that can be contacted to provide additional information",
+                    "maxLength": 70,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 30,
-                    "minLength": 1
-                },
-                "isPrimaryContact": {
-                    "description": "Flag to indicate if a contact is the primary contact.",
-                    "type": "boolean"
+                    ]
                 },
                 "honorific": {
                     "description": "The honorific for the customer, for example, Mr., Ms., Mrs., Dr. etc.",
@@ -1010,15 +973,52 @@
                         "null"
                     ]
                 },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                "isPrimaryContact": {
+                    "description": "Flag to indicate if a contact is the primary contact.",
+                    "type": "boolean"
+                },
+                "jobTitle": {
+                    "description": "The job title of the person that can be contacted.",
+                    "maxLength": 70,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "personFirstName": {
+                    "description": "An individual's first name.",
+                    "maxLength": 30,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "personLastName": {
+                    "description": "An individual's last name.",
+                    "maxLength": 30,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "personName": {
+                    "description": "The name of the individual that can be contacted to provide additional information",
+                    "maxLength": 70,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationCustomerCategoryAssetInformationType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
                 "assetType": {
                     "description": "A term used by the business to identify a specific category of logistics asset.",
@@ -1035,22 +1035,17 @@
                     ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationFulfillmentDetailsType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "trackingLevel": {
-                    "description": "This determines at what level fulfillment inventory in this location should be tracked for inventory availability purposes, for example EPC, SKU etc.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "futureProcessingTime": {
+                    "$ref": "#/definitions/ProcessingTimeType"
                 },
-                "priority": {
-                    "description": "This indicates the relative priority of this location compared to other locations for fulfillment purposes.",
-                    "type": "integer"
+                "inboundProcessingTime": {
+                    "$ref": "#/definitions/ProcessingTimeType"
                 },
                 "isFulfillmentCapacityTracked": {
                     "description": "This is an indicator that specifies whether available fulfillment capacity should be tracked for this location.",
@@ -1060,59 +1055,64 @@
                     "description": "This is an indicator that specifies whether fulfillment activity from this location can be transferred to another location.",
                     "type": "boolean"
                 },
-                "stockoutDays": {
-                    "description": "The duration of the first stockout, where a stockout is defined as the planned projected onhand (SKUProjection:planProjectedOnHand) going below zero, beginning from the date/time when the SKUs planned projected on hand first becomes negative until it becomes non-negative again.",
-                    "type": "integer"
-                },
                 "locationProcessingTime": {
-                    "$ref": "#/definitions/ProcessingTimeType"
-                },
-                "inboundProcessingTime": {
                     "$ref": "#/definitions/ProcessingTimeType"
                 },
                 "outboundProcessingTime": {
                     "$ref": "#/definitions/ProcessingTimeType"
                 },
-                "futureProcessingTime": {
-                    "$ref": "#/definitions/ProcessingTimeType"
-                }
-            },
-            "additionalProperties": false
-        },
-        "LocationGeographicalCoordinatesType": {
-            "nullable": true,
-            "type": "object",
-            "properties": {
-                "latitude": {
-                    "description": "Measurement on a globe or map of location north or south of the Equator.",
+                "priority": {
+                    "description": "This indicates the relative priority of this location compared to other locations for fulfillment purposes.",
+                    "type": "integer"
+                },
+                "stockoutDays": {
+                    "description": "The duration of the first stockout, where a stockout is defined as the planned projected onhand (SKUProjection:planProjectedOnHand) going below zero, beginning from the date/time when the SKUs planned projected on hand first becomes negative until it becomes non-negative again.",
+                    "type": "integer"
+                },
+                "trackingLevel": {
+                    "description": "This determines at what level fulfillment inventory in this location should be tracked for inventory availability purposes, for example EPC, SKU etc.",
                     "type": [
                         "string",
                         "null"
-                    ],
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "LocationGeographicalCoordinatesType": {
+            "additionalProperties": false,
+            "nullable": true,
+            "properties": {
+                "altitude": {
+                    "$ref": "#/definitions/QuantityType"
+                },
+                "latitude": {
+                    "description": "Measurement on a globe or map of location north or south of the Equator.",
                     "maxLength": 80,
-                    "minLength": 1
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "longitude": {
                     "description": "Measurement of location east or west of the prime meridian at Greenwich.",
+                    "maxLength": 80,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "altitude": {
-                    "$ref": "#/definitions/QuantityType"
+                    ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationItemDetailsType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "logisticUnitConfigurationName": {
-                    "description": "The name that identifies this logistic unit configuration.",
+                "handlingAssetType": {
+                    "description": "Handling Unit Type. Grouping of assets based on traits like dimensions,weight,manufacture etc.",
                     "type": [
                         "string",
                         "null"
@@ -1121,13 +1121,6 @@
                 "isDefaultLogisticUnitConfiguration": {
                     "description": "An indicator that defines the default logistic unit information configuration for this item.",
                     "type": "boolean"
-                },
-                "handlingAssetType": {
-                    "description": "Handling Unit Type. Grouping of assets based on traits like dimensions,weight,manufacture etc.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "isLPNAttribute1Required": {
                     "description": "An indicator that specifies whether the designated first user-defined LPN attribute is required.",
@@ -1148,27 +1141,20 @@
                 "isLPNAttribute5Required": {
                     "description": "An indicator that specifies whether the designated fifth user-defined LPN attribute is required.",
                     "type": "boolean"
-                }
-            },
-            "additionalProperties": false
-        },
-        "LocationItemInformationType": {
-            "required": [
-                "itemId"
-            ],
-            "type": "object",
-            "properties": {
-                "itemId": {
-                    "description": "The unique identification of this item.",
-                    "type": "string"
                 },
-                "ownerOfTradeItem": {
-                    "description": "The party that owns this item.",
+                "logisticUnitConfigurationName": {
+                    "description": "The name that identifies this logistic unit configuration.",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
+                }
+            },
+            "type": "object"
+        },
+        "LocationItemInformationType": {
+            "additionalProperties": false,
+            "properties": {
                 "handlingAssetType": {
                     "description": "Handling Unit Type. Grouping of assets based on traits like dimensions, weight, manufacture, etc.",
                     "type": [
@@ -1183,26 +1169,6 @@
                         "null"
                     ]
                 },
-                "lotFormatId": {
-                    "description": "The set of characters used to specify the method for the parsing of lot numbers.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "serialNumberType": {
-                    "description": "The type of serial number.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "reorderQuantity": {
-                    "$ref": "#/definitions/QuantityType"
-                },
-                "reorderPoint": {
-                    "$ref": "#/definitions/QuantityType"
-                },
                 "isLPNAttribute1Required": {
                     "description": "An indicator that specifies whether the designated first user-defined LPN attribute is required.",
                     "type": "boolean"
@@ -1223,26 +1189,75 @@
                     "description": "An indicator that specifies whether the designated fifth user-defined LPN attribute is required.",
                     "type": "boolean"
                 },
+                "itemId": {
+                    "description": "The unique identification of this item.",
+                    "type": "string"
+                },
                 "locationItemDetails": {
                     "description": "Information about operational considerations for the item.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/LocationItemDetailsType"
-                    }
+                    },
+                    "type": "array"
+                },
+                "lotFormatId": {
+                    "description": "The set of characters used to specify the method for the parsing of lot numbers.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ownerOfTradeItem": {
+                    "description": "The party that owns this item.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reorderPoint": {
+                    "$ref": "#/definitions/QuantityType"
+                },
+                "reorderQuantity": {
+                    "$ref": "#/definitions/QuantityType"
+                },
+                "serialNumberType": {
+                    "description": "The type of serial number.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "itemId"
+            ],
+            "type": "object"
         },
         "LocationLoadingTimeInformationType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                },
+                "fixedStopTimeDuration": {
+                    "description": "The amount of time in minutes to be added to a stop duration for loading and unloading.",
+                    "type": "number"
+                },
+                "hasHandlingTimeItemLoading": {
+                    "description": "An indicator that determines whether variable definitions are defined in the variableLoadingTime or variableUnloadingTime collections.",
+                    "type": "boolean"
+                },
                 "itemType": {
                     "description": "A term used to categorize similar items.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "loadingDivideByFactor": {
+                    "description": "A factor by which the units are divided, before multiplying by the variableTimeSpan.",
+                    "type": "number"
                 },
                 "loadingType": {
                     "description": "The loading type for the loading time information.",
@@ -1251,65 +1266,77 @@
                         "null"
                     ]
                 },
-                "hasHandlingTimeItemLoading": {
-                    "description": "An indicator that determines whether variable definitions are defined in the variableLoadingTime or variableUnloadingTime collections.",
-                    "type": "boolean"
-                },
-                "fixedStopTimeDuration": {
-                    "description": "The amount of time in minutes to be added to a stop duration for loading and unloading.",
-                    "type": "number"
-                },
-                "loadingDivideByFactor": {
-                    "description": "A factor by which the units are divided, before multiplying by the variableTimeSpan.",
-                    "type": "number"
+                "loadingVariableCode": {
+                    "$ref": "#/definitions/LocationVariableCodeEnumerationType"
                 },
                 "loadingVariableTimeDuration": {
                     "description": "The amount of time in minutes to be added for each variable time unit.",
                     "type": "number"
                 },
-                "loadingVariableCode": {
-                    "$ref": "#/definitions/LocationVariableCodeEnumerationType"
-                },
                 "unloadingDivideByFactor": {
                     "description": "A factor by which the units are divided, before multiplying by the variableTimeSpan.",
-                    "type": "number"
-                },
-                "unloadingVariableTimeDuration": {
-                    "description": "The amount of time in minutes to be added for each variable time unit.",
                     "type": "number"
                 },
                 "unloadingVariableCode": {
                     "$ref": "#/definitions/LocationVariableCodeEnumerationType"
                 },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                "unloadingVariableTimeDuration": {
+                    "description": "The amount of time in minutes to be added for each variable time unit.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationManufacturingModelInformationType": {
-            "required": [
-                "modelId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
+                "freezeWindowDuration": {
+                    "$ref": "#/definitions/TimeMeasurementType"
+                },
                 "modelId": {
                     "description": "The name of the model.",
                     "type": "string"
-                },
-                "freezeWindowDuration": {
-                    "$ref": "#/definitions/TimeMeasurementType"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "modelId"
+            ],
+            "type": "object"
+        },
+        "LocationMeasuresType": {
+            "additionalProperties": false,
+            "nullable": true,
+            "properties": {
+                "measure": {
+                    "description": "Time-phased capacities/constraints/measures associated with this location.",
+                    "items": {
+                        "$ref": "#/definitions/LocationMeasureType"
+                    },
+                    "type": "array"
+                },
+                "storageUnitOfMeasure": {
+                    "description": "The designated unit of measure by which goods are stored for capacity measures.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
         },
         "LocationMeasureType": {
-            "required": [
-                "measureType",
-                "quantity"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
+                "effectiveFromDateTime": {
+                    "description": "Defines the time on the day from which, this measure begins.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "effectiveUpToDateTime": {
+                    "description": "Defines the time on a day up to which, this measure is valid.",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "measureType": {
                     "description": "Name of the constraint/capacity/measure.",
                     "type": "string"
@@ -1317,71 +1344,47 @@
                 "quantity": {
                     "description": "Quantity of this measure.",
                     "type": "number"
-                },
-                "effectiveFromDateTime": {
-                    "description": "Defines the time on the day from which, this measure begins.",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "effectiveUpToDateTime": {
-                    "description": "Defines the time on a day up to which, this measure is valid.",
-                    "type": "string",
-                    "format": "date-time"
                 }
             },
-            "additionalProperties": false
-        },
-        "LocationMeasuresType": {
-            "nullable": true,
-            "type": "object",
-            "properties": {
-                "storageUnitOfMeasure": {
-                    "description": "The designated unit of measure by which goods are stored for capacity measures.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "measure": {
-                    "description": "Time-phased capacities/constraints/measures associated with this location.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationMeasureType"
-                    }
-                }
-            },
-            "additionalProperties": false
+            "required": [
+                "measureType",
+                "quantity"
+            ],
+            "type": "object"
         },
         "LocationStatusType": {
-            "required": [
-                "statusCode"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "dependencies": {
-                "extensions": {
-                    "not": {
-                        "required": [
-                            "avpList"
-                        ]
-                    }
-                },
                 "avpList": {
                     "not": {
                         "required": [
                             "extensions"
                         ]
                     }
+                },
+                "extensions": {
+                    "not": {
+                        "required": [
+                            "avpList"
+                        ]
+                    }
                 }
             },
             "properties": {
-                "statusCode": {
-                    "description": "Indicates if a location is active/inactive.",
-                    "type": "string"
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                },
+                "avpList": {
+                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
+                    "items": {
+                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
+                    },
+                    "type": "array"
                 },
                 "effectiveFromDate": {
                     "description": "Date (inclusive of the day itself) that this location status begins.",
-                    "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "type": "string"
                 },
                 "effectiveTime": {
                     "description": "Date (inclusive of the day itself) that this location status begins.",
@@ -1389,200 +1392,67 @@
                 },
                 "effectiveUpToDate": {
                     "description": "The date up to which (exclusive of that day), location status is effective.",
-                    "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "type": "string"
                 },
                 "extensions": {
                     "$ref": "#/definitions/ExtensionType"
                 },
-                "avpList": {
-                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
-                    }
-                },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                "statusCode": {
+                    "description": "Indicates if a location is active/inactive.",
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "statusCode"
+            ],
+            "type": "object"
         },
         "LocationTransportEquipmentRestrictionCodeEnumerationType": {
-            "type": "string",
             "enum": [
                 "IER_NULL",
                 "IER_EXCLUDE",
                 "IER_INCLUDE"
-            ]
+            ],
+            "type": "string"
         },
         "LocationTransportEquipmentRestrictionType": {
+            "additionalProperties": false,
+            "properties": {
+                "restrictionCode": {
+                    "$ref": "#/definitions/LocationTransportEquipmentRestrictionCodeEnumerationType"
+                },
+                "transportEquipmentTypeCode": {
+                    "description": "Code to identify equipment type used in transporting a load.",
+                    "maxLength": 80,
+                    "type": "string"
+                }
+            },
             "required": [
                 "transportEquipmentTypeCode",
                 "restrictionCode"
             ],
-            "type": "object",
-            "properties": {
-                "transportEquipmentTypeCode": {
-                    "description": "Code to identify equipment type used in transporting a load.",
-                    "type": "string",
-                    "maxLength": 80
-                },
-                "restrictionCode": {
-                    "$ref": "#/definitions/LocationTransportEquipmentRestrictionCodeEnumerationType"
-                }
-            },
-            "additionalProperties": false
+            "type": "object"
         },
         "LocationType": {
-            "required": [
-                "locationId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "dependencies": {
-                "extensions": {
-                    "not": {
-                        "required": [
-                            "avpList"
-                        ]
-                    }
-                },
                 "avpList": {
                     "not": {
                         "required": [
                             "extensions"
                         ]
                     }
+                },
+                "extensions": {
+                    "not": {
+                        "required": [
+                            "avpList"
+                        ]
+                    }
                 }
             },
             "properties": {
-                "creationDateTime": {
-                    "description": "Date and time when the document was created.",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "documentStatusCode": {
-                    "$ref": "#/definitions/DocumentStatusEnumerationType"
-                },
-                "documentActionCode": {
-                    "$ref": "#/definitions/DocumentActionEnumerationType"
-                },
-                "lastUpdateDateTime": {
-                    "description": "Date and time when the document was last updated.",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "extensions": {
-                    "$ref": "#/definitions/ExtensionType"
-                },
-                "avpList": {
-                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
-                    }
-                },
-                "entityId": {
-                    "description": "An internally used identifier used for document tracking.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "externalEntityId": {
-                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer\u2019s original data/entity ID. It ensures traceability and accurate association between the customer\u2019s data and the ingested records.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "locationId": {
-                    "description": "The unique identifier of the piece of information, such as the object identifier or the document identifier.",
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "parentParty": {
-                    "$ref": "#/definitions/ParentPartyType"
-                },
-                "basicLocation": {
-                    "$ref": "#/definitions/BasicLocationType"
-                },
-                "sales": {
-                    "type": "object",
-                    "properties": {
-                        "organization": {
-                            "type": "number"
-                        },
-                        "channel": {
-                            "type": "number"
-                        },
-                        "division": {
-                            "type": "number"
-                        },
-                        "partnerFunctions": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "partySold": {
-                                        "type": "string"
-                                    },
-                                    "partnerNumber": {
-                                        "type": "number"
-                                    }
-                                },
-                                "additionalProperties": false
-                            }
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "financial": {
-                    "type": "object",
-                    "properties": {
-                        "companyCode": {
-                            "type": "number"
-                        },
-                        "reconciliationAccount": {
-                            "type": "number"
-                        },
-                        "sortKey": {
-                            "type": "string"
-                        },
-                        "bankDetails": {
-                            "type": "object",
-                            "properties": {
-                                "bankKey": {
-                                    "type": "string"
-                                },
-                                "bankCountryKey": {
-                                    "type": "string"
-                                },
-                                "bankAccountNumber": {
-                                    "type": "string"
-                                },
-                                "bankAccountType": {
-                                    "type": "string"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "taxDetails": {
-                            "type": "object",
-                            "properties": {
-                                "taxCategory": {
-                                    "type": "string"
-                                },
-                                "taxNumber": {
-                                    "type": "string"
-                                }
-                            },
-                            "additionalProperties": false
-                        }
-                    },
-                    "additionalProperties": false
-                },
                 "accessGroup": {
                     "description": "Optional field that can be filled for access control use cases (within the LDE UI). Content of this field will be ignored by the LDE machine learning model.",
                     "type": [
@@ -1590,14 +1460,15 @@
                         "null"
                     ]
                 },
-                "throughputGroupName": {
-                    "description": "Throughput group associated with this location. Throughput constraints define the amount of handling that a location can do in a specific amount of time.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
+                "avpList": {
+                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
+                    "items": {
+                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
+                    },
+                    "type": "array"
+                },
+                "basicLocation": {
+                    "$ref": "#/definitions/BasicLocationType"
                 },
                 "businessUnitId": {
                     "description": "A set of characters that uniquely references a financial segment of the business operations.",
@@ -1606,6 +1477,20 @@
                         "null"
                     ]
                 },
+                "captainLocationId": {
+                    "description": "This denotes the captain vendor (locationId), for the order grouping purpose. Used for Order Optimization.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "creationDateTime": {
+                    "description": "Date and time when the document was created.",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "despatchAdviceRestrictionCode": {
                     "description": "Determines how much despatch advice information should be sent to this client location.",
                     "type": [
@@ -1613,88 +1498,112 @@
                         "null"
                     ]
                 },
-                "trackDeliveryCapacity": {
-                    "description": "Indicates if the delivery capacity will be tracked. This  is exclusively for considering  labour capacity that will be required for store pickup orders.",
-                    "type": "boolean"
+                "distributionCenterDetails": {
+                    "description": "Detailed information needed for an individual warehouse that replenishes goods for the store.",
+                    "items": {
+                        "$ref": "#/definitions/DistributionCenterDetailsType"
+                    },
+                    "type": "array"
                 },
-                "locationHierarchyInformation": {
-                    "$ref": "#/definitions/HierarchyInformationType"
+                "documentActionCode": {
+                    "$ref": "#/definitions/DocumentActionEnumerationType"
                 },
-                "logisticDetails": {
-                    "$ref": "#/definitions/LogisticDetailsType"
+                "documentStatusCode": {
+                    "$ref": "#/definitions/DocumentStatusEnumerationType"
                 },
-                "planningDetails": {
-                    "$ref": "#/definitions/PlanningDetailsType"
+                "entityId": {
+                    "description": "An internally used identifier used for document tracking.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "retailDetails": {
-                    "$ref": "#/definitions/RetailDetailsType"
+                "extensions": {
+                    "$ref": "#/definitions/ExtensionType"
+                },
+                "externalEntityId": {
+                    "description": "This field captures the unique identifier provided by the customer, linking the ingested data to the customer\u00e2\u20ac\u2122s original data/entity ID. It ensures traceability and accurate association between the customer\u00e2\u20ac\u2122s data and the ingested records.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "fulfillmentDetails": {
                     "$ref": "#/definitions/LocationFulfillmentDetailsType"
                 },
-                "isValidForTransportPlanning": {
-                    "description": "Indicates whether this entity data is valid for the transportation planning considerations. This flag is set by the validation services of the Transportation Planning application and should not be sent by host system or user.",
-                    "type": "boolean"
+                "isCaptainLocation": {
+                    "description": "An indicator that defines whether location is a captain vendor, e.g. value C denotes that record is Captain Vendor. Used for Order Optimization.",
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "isValidForExec": {
                     "description": "Indicates whether this entity data is valid for the cognitive execution considerations. This flag is set by the validation services of the cognitive execution and should not be sent by host system or user.",
                     "type": "boolean"
                 },
-                "distributionCenterDetails": {
-                    "description": "Detailed information needed for an individual warehouse that replenishes goods for the store.",
-                    "type": "array",
+                "isValidForTransportPlanning": {
+                    "description": "Indicates whether this entity data is valid for the transportation planning considerations. This flag is set by the validation services of the Transportation Planning application and should not be sent by host system or user.",
+                    "type": "boolean"
+                },
+                "lastUpdateDateTime": {
+                    "description": "Date and time when the document was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "locationHierarchyInformation": {
+                    "$ref": "#/definitions/HierarchyInformationType"
+                },
+                "locationId": {
+                    "description": "The unique identifier of the piece of information, such as the object identifier or the document identifier.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "locationPriorityAttribute": {
+                    "description": "This describes the importance of demand associated with this location, in Demand Prioritization Framework.",
+                    "maxLength": 100,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "logisticDetails": {
+                    "$ref": "#/definitions/LogisticDetailsType"
+                },
+                "manufacturingModelInformation": {
+                    "description": "Location specific parameters for manufacturing model.",
                     "items": {
-                        "$ref": "#/definitions/DistributionCenterDetailsType"
-                    }
+                        "$ref": "#/definitions/LocationManufacturingModelInformationType"
+                    },
+                    "type": "array"
                 },
                 "measures": {
                     "$ref": "#/definitions/LocationMeasuresType"
                 },
-                "manufacturingModelInformation": {
-                    "description": "Location specific parameters for manufacturing model.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationManufacturingModelInformationType"
-                    }
-                },
-                "locationPriorityAttribute": {
-                    "description": "This describes the importance of demand associated with this location, in Demand Prioritization Framework.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 100
-                },
                 "parentLocationId": {
-                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR\u2019s can be grouped into a single load.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "description": "This field identifies the parent facility for one or more physical Location, e.g. In LoadBuildSource (LBS) application parentLocationId and (child)locationId combination is used to create multi stop load, were same parent locations STR\u00e2\u20ac\u2122s can be grouped into a single load.",
                     "maxLength": 80,
-                    "minLength": 1
-                },
-                "captainLocationId": {
-                    "description": "This denotes the captain vendor (locationId), for the order grouping purpose. Used for Order Optimization.",
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 80,
-                    "minLength": 1
+                    ]
                 },
-                "isCaptainLocation": {
-                    "description": "An indicator that defines whether location is a captain vendor, e.g. value C denotes that record is Captain Vendor. Used for Order Optimization.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "maxLength": 1,
-                    "minLength": 1
+                "parentParty": {
+                    "$ref": "#/definitions/ParentPartyType"
+                },
+                "planningDetails": {
+                    "$ref": "#/definitions/PlanningDetailsType"
                 },
                 "requiresTransportPlanning": {
                     "description": "Used to determine if this order should be sent to the TM system to be planned",
                     "type": "boolean"
+                },
+                "retailDetails": {
+                    "$ref": "#/definitions/RetailDetailsType"
                 },
                 "senderDocumentId": {
                     "description": "The identification of the original document that was sent.  Examples could be an SAP IDOC number.",
@@ -1709,12 +1618,27 @@
                         "string",
                         "null"
                     ]
+                },
+                "throughputGroupName": {
+                    "description": "Throughput group associated with this location. Throughput constraints define the amount of handling that a location can do in a specific amount of time.",
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "trackDeliveryCapacity": {
+                    "description": "Indicates if the delivery capacity will be tracked. This  is exclusively for considering  labour capacity that will be required for store pickup orders.",
+                    "type": "boolean"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "locationId"
+            ],
+            "type": "object"
         },
         "LocationVariableCodeEnumerationType": {
-            "type": "string",
             "enum": [
                 "PIECES",
                 "VOLUME",
@@ -1728,166 +1652,29 @@
                 "FLEXQUANTITY4",
                 "FLEXQUANTITY5",
                 "INVALID_DIM"
-            ]
+            ],
+            "type": "string"
         },
         "LogisticDetailsType": {
-            "nullable": true,
-            "type": "object",
+            "additionalProperties": false,
             "dependencies": {
-                "extensions": {
-                    "not": {
-                        "required": [
-                            "avpList"
-                        ]
-                    }
-                },
                 "avpList": {
                     "not": {
                         "required": [
                             "extensions"
                         ]
                     }
+                },
+                "extensions": {
+                    "not": {
+                        "required": [
+                            "avpList"
+                        ]
+                    }
                 }
             },
+            "nullable": true,
             "properties": {
-                "maximumShipmentWeight": {
-                    "$ref": "#/definitions/MeasurementType"
-                },
-                "maximumShipmentVolume": {
-                    "$ref": "#/definitions/MeasurementType"
-                },
-                "fixedLoadingDurationInHours": {
-                    "description": "The fixed loading time (in hours) at the shipping location.",
-                    "type": "number"
-                },
-                "minimumVariableLoadingDurationInHours": {
-                    "description": "The minimum variable loading time (in hours) at the shipping location.",
-                    "type": "number"
-                },
-                "maximumVariableLoadingDurationInHours": {
-                    "description": "The maximum variable loading time (in hours) at the shipping location.",
-                    "type": "number"
-                },
-                "carrier": {
-                    "$ref": "#/definitions/PartyIdentificationType"
-                },
-                "earlyDeliveryTolerance": {
-                    "$ref": "#/definitions/TimeMeasurementType"
-                },
-                "lateDeliveryTolerance": {
-                    "$ref": "#/definitions/TimeMeasurementType"
-                },
-                "allowDropOffCode": {
-                    "$ref": "#/definitions/AllowDropOffEnumerationType"
-                },
-                "allowPickUpCode": {
-                    "$ref": "#/definitions/AllowPickUpEnumerationType"
-                },
-                "isShipmentDeconsolidationAllowed": {
-                    "description": "Indicates if the Hub can be used as a location to deconsolidate shipments.",
-                    "type": "boolean"
-                },
-                "isPartialShipmentAllowed": {
-                    "description": "Back Order Flag.",
-                    "type": "boolean"
-                },
-                "isPartialAllocationAllowed": {
-                    "description": "Partial Allocation Flag.",
-                    "type": "boolean"
-                },
-                "isCarrierChangable": {
-                    "description": "Flag to indicate if Carrier can be changed.",
-                    "type": "boolean"
-                },
-                "isSplitCaseAllowed": {
-                    "description": "Split Case Flag.",
-                    "type": "boolean"
-                },
-                "distanceOverrideCode": {
-                    "description": "Indicates whether to convert or delete the distance override when updating the shipping location's address.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "storageAreaSize": {
-                    "$ref": "#/definitions/QuantityType"
-                },
-                "manufacturerOfTradeItem": {
-                    "$ref": "#/definitions/PartyIdentificationType"
-                },
-                "inventoryStatusProgression": {
-                    "description": "A term that represents a list of inventory statuses.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "shipmentLabelId": {
-                    "description": "The set of characters that uniquely references a template or example of the format to be used when creating labels for the shipping of goods for members of this Customer Category.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "shipmentCreationRule": {
-                    "description": "The term by which the business understands the set of rules to follow when creating shipments for customers assigned to this Customer Category.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "carrierGroup": {
-                    "description": "The term by which the business refers to a collection of carriers to which the carrier for the movement belongs.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "isCrossdockAllowed": {
-                    "description": "An indicator that specifies whether outbound operations is allowed to fulfill this order line using items as they are received.",
-                    "type": "boolean"
-                },
-                "isTransportationPlanningRequired": {
-                    "description": "An indicator that specifies whether orders for this customer require shipment planning in a transporation management system.",
-                    "type": "boolean"
-                },
-                "isFreshnessProcessingRequired": {
-                    "description": "An indicator that specifies whether the items for this customer category require evaluation to ensure they meet freshness requirements.",
-                    "type": "boolean"
-                },
-                "minimumShelfHours": {
-                    "description": "The minimum amount of time, in hours, that an item must have available before expiration in order to be eligible for being sent to a customer of this category.",
-                    "type": "integer"
-                },
-                "departmentId": {
-                    "description": "The series of characters that uniquely identifies the business category of record for customers assigned to this category.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "reservationPriority": {
-                    "description": "This element is used to determine which orders receive inventory when there is not enough inventory in the warehouse to satisfy all orders for an item number. This option applies only when the order reservation process is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "inventorySelectionMethod": {
-                    "description": "Method of selecting product to meet order requirements.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "palletBuildingConsolidationRule": {
-                    "description": "The term by which a consolidation order for placing items onto a pallet is known by the business.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "absoluteInventoryRotationWindow": {
                     "$ref": "#/definitions/TimeMeasurementType"
                 },
@@ -1897,6 +1684,152 @@
                         "string",
                         "null"
                     ]
+                },
+                "allowBreaksWhileLoading": {
+                    "description": "An indicator that determines whether breaks are allowed while loading at locations of this type.",
+                    "type": "boolean"
+                },
+                "allowDropOffCode": {
+                    "$ref": "#/definitions/AllowDropOffEnumerationType"
+                },
+                "allowLoadToBecomeEmpty": {
+                    "description": "An indicator that determines whether a load can become empty at this location, even if this location is an intermediate stop.",
+                    "type": "boolean"
+                },
+                "allowPickUpCode": {
+                    "$ref": "#/definitions/AllowPickUpEnumerationType"
+                },
+                "assetInformation": {
+                    "description": "Contains information on the movement of the goods.",
+                    "items": {
+                        "$ref": "#/definitions/LocationCustomerCategoryAssetInformationType"
+                    },
+                    "type": "array"
+                },
+                "assumeTrailerSwap": {
+                    "description": "An indicator that determines whether a trailer swap should be used (incurring 2x fixed time) or whether the vehicle should be unloaded and loaded live.",
+                    "type": "boolean"
+                },
+                "automaticallyReceiveASN": {
+                    "description": "An indicator that defines whether Advance Ship Notices from this supplier are approved for receiving operations.",
+                    "type": "boolean"
+                },
+                "avpList": {
+                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
+                    "items": {
+                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
+                    },
+                    "type": "array"
+                },
+                "carrier": {
+                    "$ref": "#/definitions/PartyIdentificationType"
+                },
+                "carrierDetails": {
+                    "description": "Information about carriers for this supplier location.",
+                    "items": {
+                        "$ref": "#/definitions/ShippingCarrierDetailsType"
+                    },
+                    "type": "array"
+                },
+                "carrierGroup": {
+                    "description": "The term by which the business refers to a collection of carriers to which the carrier for the movement belongs.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "consignmentTrackingCode": {
+                    "description": "A term used by the business to identify the supplier required tracking services for items for which it retains ownership until a predetermined future point in time, such as when shipped.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customerCategoryId": {
+                    "description": "The set of characters that uniquely references the Customer Category.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "departmentId": {
+                    "description": "The series of characters that uniquely identifies the business category of record for customers assigned to this category.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "destinationSplitConstraint": {
+                    "$ref": "#/definitions/SplitConstraintType"
+                },
+                "distanceOverrideCode": {
+                    "description": "Indicates whether to convert or delete the distance override when updating the shipping location's address.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "earliestPostDischargeStartTimeDur": {
+                    "description": "Specifies the earliest time after carrier departure that post-discharge handling can start. Post-discharge handling is required for non-live stops at this dock if latestPostDischargeStartTimeSpan is specified and greater than 0.",
+                    "type": "number"
+                },
+                "earliestPreLoadingEndTimeDur": {
+                    "description": "Specifies the earliest time before carrier arrival that pre-loading handling can end. Pre-loading handling is required for non-live stops at this dock if this value is specified and greater than 0.",
+                    "type": "number"
+                },
+                "earlyDeliveryTolerance": {
+                    "$ref": "#/definitions/TimeMeasurementType"
+                },
+                "extensions": {
+                    "$ref": "#/definitions/ExtensionType"
+                },
+                "fixedLoadingDurationInHours": {
+                    "description": "The fixed loading time (in hours) at the shipping location.",
+                    "type": "number"
+                },
+                "inboundLoadingCode": {
+                    "$ref": "#/definitions/LoadingCodeType"
+                },
+                "inventorySelectionMethod": {
+                    "description": "Method of selecting product to meet order requirements.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "inventoryStatusProgression": {
+                    "description": "A term that represents a list of inventory statuses.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "inventoryStatusType": {
+                    "description": "The specified end state of the inventory upon completion of the requested activity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isCarrierChangable": {
+                    "description": "Flag to indicate if Carrier can be changed.",
+                    "type": "boolean"
+                },
+                "isCrossdockAllowed": {
+                    "description": "An indicator that specifies whether outbound operations is allowed to fulfill this order line using items as they are received.",
+                    "type": "boolean"
+                },
+                "isFirstStopOnly": {
+                    "description": "An indicator that determines whether this location can only be routed as the first stop on a load or trip.",
+                    "type": "boolean"
+                },
+                "isFreshnessProcessingRequired": {
+                    "description": "An indicator that specifies whether the items for this customer category require evaluation to ensure they meet freshness requirements.",
+                    "type": "boolean"
+                },
+                "isLastStopOnly": {
+                    "description": "An indicator that determines whether this location can only be routed as the last stop on a load or trip.",
+                    "type": "boolean"
                 },
                 "isLPNAttribute1Required": {
                     "description": "An indicator that specifies whether the designated first user-defined LPN attribute is required.",
@@ -1918,33 +1851,244 @@
                     "description": "An indicator that specifies whether the designated fifth user-defined LPN attribute is required.",
                     "type": "boolean"
                 },
-                "repackClass": {
-                    "description": "A term or value that refers to a unique packaging option. This is used to then match items requiring the option with packaging methods that provide it.",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "string"
-                    }
+                "isOriginRule": {
+                    "description": "An indicator that determines whether the rule applies to shipments that originate at the location.",
+                    "type": "boolean"
                 },
-                "assetInformation": {
-                    "description": "Contains information on the movement of the goods.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationCustomerCategoryAssetInformationType"
-                    }
+                "isPartialAllocationAllowed": {
+                    "description": "Partial Allocation Flag.",
+                    "type": "boolean"
                 },
-                "customerCategoryId": {
-                    "description": "The set of characters that uniquely references the Customer Category.",
+                "isPartialShipmentAllowed": {
+                    "description": "Back Order Flag.",
+                    "type": "boolean"
+                },
+                "isPercentageRule": {
+                    "description": "An indicator that determines whether the rule is percentage based.",
+                    "type": "boolean"
+                },
+                "isShipmentConsolidationAllowed": {
+                    "description": "An indicator that determines whether consolidation can occur on inbond loads at this location.",
+                    "type": "boolean"
+                },
+                "isShipmentDeconsolidationAllowed": {
+                    "description": "Indicates if the Hub can be used as a location to deconsolidate shipments.",
+                    "type": "boolean"
+                },
+                "isSplitCaseAllowed": {
+                    "description": "Split Case Flag.",
+                    "type": "boolean"
+                },
+                "isStandardCaseRequired": {
+                    "description": "Determines whether or not the system can allocate non-standard (different from the standard footprint) case quantities.",
+                    "type": "boolean"
+                },
+                "isTransferHub": {
+                    "description": "An indicator that determines whether this location is a transfer hub.",
+                    "type": "boolean"
+                },
+                "isTransportationPlanningRequired": {
+                    "description": "An indicator that specifies whether orders for this customer require shipment planning in a transporation management system.",
+                    "type": "boolean"
+                },
+                "lateDeliveryTolerance": {
+                    "$ref": "#/definitions/TimeMeasurementType"
+                },
+                "latestPostDischargeStartTimeDur": {
+                    "description": "Specifies the latest time after carrier departure that post-discharge handling can start. Post-discharge handling is required for non-live stops at this dock if this value is specified and greater than 0.",
+                    "type": "number"
+                },
+                "latestPreLoadingEndTimeDur": {
+                    "description": "Specifies the latest time before carrier arrival that pre-loading handling can end. Pre-loading handling is required for non-live stops at this dock if earliestPreLoadingEndTimeSpan is specified and greater than 0.",
+                    "type": "number"
+                },
+                "loadingTimeInformation": {
+                    "description": "An indicator that determines whether this location can only be routed as the last stop on a load or trip.",
+                    "items": {
+                        "$ref": "#/definitions/LocationLoadingTimeInformationType"
+                    },
+                    "type": "array"
+                },
+                "loadingUnloadingTimeCalculationCode": {
+                    "$ref": "#/definitions/LoadingUnloadingTimeCalculationCodeType"
+                },
+                "locationConsignmentItemOverride": {
+                    "description": "Information about consignment items for this supplier location.",
+                    "items": {
+                        "$ref": "#/definitions/LocationConsignmentItemOverrideType"
+                    },
+                    "type": "array"
+                },
+                "locationItemInformation": {
+                    "description": "Contains information relevant to the operational needs of items for this location",
+                    "items": {
+                        "$ref": "#/definitions/LocationItemInformationType"
+                    },
+                    "type": "array"
+                },
+                "lotFormatId": {
+                    "description": "The set of characters used to specify the method for the parsing of lot numbers.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "isStandardCaseRequired": {
-                    "description": "Determines whether or not the system can allocate non-standard (different from the standard footprint) case quantities.",
-                    "type": "boolean"
+                "manufacturerOfTradeItem": {
+                    "$ref": "#/definitions/PartyIdentificationType"
+                },
+                "maxCube": {
+                    "description": "The maximum cubic volume allowed at this location.",
+                    "type": "number"
+                },
+                "maxDestinationSplits": {
+                    "description": "The maximum number of times a shipment can be split when it terminates at this location.",
+                    "type": "integer"
+                },
+                "maxHandlingTimeDur": {
+                    "description": "The maximum time in minutes it will take at this location to handle goods.",
+                    "type": "number"
+                },
+                "maximumShipmentVolume": {
+                    "$ref": "#/definitions/MeasurementType"
+                },
+                "maximumShipmentWeight": {
+                    "$ref": "#/definitions/MeasurementType"
+                },
+                "maximumVariableLoadingDurationInHours": {
+                    "description": "The maximum variable loading time (in hours) at the shipping location.",
+                    "type": "number"
+                },
+                "maxInboundLoads": {
+                    "description": "The maximum number of inbound loads this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "maxLoadWeight": {
+                    "description": "The maximum weight for loads that stop at this location.",
+                    "type": "number"
+                },
+                "maxOriginSplits": {
+                    "description": "The maximum number of times a shipment can be split when it originates at this location.",
+                    "type": "integer"
+                },
+                "maxOutboundLoads": {
+                    "description": "The maximum number of outbound loads this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "maxPallets": {
+                    "description": "The maximum number of pallets this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "maxPenalty": {
+                    "description": "The penalty to be applied if the maximum constraint for this location is exceeded.",
+                    "type": "number"
+                },
+                "maxPickAndDrop": {
+                    "description": "The maximum physical and monetary dimensions that can be picked up and dropped off at this location.",
+                    "type": "number"
+                },
+                "maxPieces": {
+                    "description": "The maximum number of pieces this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "maxShipmentHoldTimeDur": {
+                    "description": "The maximum time in minutes a shipment can remain at this location.",
+                    "type": "number"
+                },
+                "maxTotalTrailerLength": {
+                    "description": "The maximum total trailer length which is allowed to arrive or depart from the location.",
+                    "type": "number"
+                },
+                "maxTrailersPerDrop": {
+                    "description": "The maximum number of trailers that can be handled at the location. More trailers may arrive at the location, based upon MaxTrailersPerLoad, but only shipments from this number of trailers may unload at the location.",
+                    "type": "integer"
+                },
+                "maxTrailersPerLoad": {
+                    "description": "The maximum number of trailers which can leave or arrive at the location on a load.",
+                    "type": "integer"
+                },
+                "minCrossdockDur": {
+                    "description": "The minimum time in minutes for processing a shipment through this location.",
+                    "type": "number"
+                },
+                "minCube": {
+                    "description": "The minumum cubic volume allowed at this location.",
+                    "type": "number"
+                },
+                "minDestinationShipmentWindowDur": {
+                    "description": "The minimum delivery window a shipment can have to be split when it terminates at this location.",
+                    "type": "number"
+                },
+                "minHandlingTimeDur": {
+                    "description": "The minimum time in minutes it will take at this location to handle goods.",
+                    "type": "number"
+                },
+                "minimumShelfHours": {
+                    "description": "The minimum amount of time, in hours, that an item must have available before expiration in order to be eligible for being sent to a customer of this category.",
+                    "type": "integer"
+                },
+                "minimumVariableLoadingDurationInHours": {
+                    "description": "The minimum variable loading time (in hours) at the shipping location.",
+                    "type": "number"
+                },
+                "minInboundLoads": {
+                    "description": "The minimum number of inbound loads this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "minLeadTimeDur": {
+                    "description": "The minimum time in minutes that must be given as notification of an inbound load to this location.",
+                    "type": "number"
+                },
+                "minOriginShipmentWindowDur": {
+                    "description": "The minimum pick window a shipment can have to be split when it originates at this location.",
+                    "type": "number"
+                },
+                "minOutboundLoads": {
+                    "description": "The minimum number of outbound loads this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "minPallets": {
+                    "description": "The minimum number of pallets this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "minPenalty": {
+                    "description": "The penalty to be applied if the minimum constraint for this location is exceeded.",
+                    "type": "number"
+                },
+                "minPieces": {
+                    "description": "The minimum number of pieces this location can handle during a calendar day.",
+                    "type": "integer"
+                },
+                "minSplitUom": {
+                    "$ref": "#/definitions/ShipmentUomType"
+                },
+                "minSplitValue": {
+                    "description": "The minimum value the shipment dimension must have for the shipment to be spilt.",
+                    "type": "number"
+                },
+                "minStopWeight": {
+                    "description": "The minimum weight for a drop or a pick at this location.",
+                    "type": "number"
+                },
+                "minWeight": {
+                    "description": "The minimum weight requirement for this location.",
+                    "type": "number"
+                },
+                "numberParkingSlots": {
+                    "description": "The number of parking slots at this location.",
+                    "type": "integer"
+                },
+                "originSplitConstraint": {
+                    "$ref": "#/definitions/SplitConstraintType"
+                },
+                "outboundLoadingCode": {
+                    "$ref": "#/definitions/LoadingCodeType"
+                },
+                "palletBuildingConsolidationRule": {
+                    "description": "The term by which a consolidation order for placing items onto a pallet is known by the business.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "parcelBillingId": {
                     "description": "Deprecated as of 2021.10.0.",
@@ -1953,22 +2097,25 @@
                         "null"
                     ]
                 },
-                "consignmentTrackingCode": {
-                    "description": "A term used by the business to identify the supplier required tracking services for items for which it retains ownership until a predetermined future point in time, such as when shipped.",
+                "repackClass": {
+                    "description": "A term or value that refers to a unique packaging option. This is used to then match items requiring the option with packaging methods that provide it.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "requiredService": {
+                    "description": "The required service at this location.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "inventoryStatusType": {
-                    "description": "The specified end state of the inventory upon completion of the requested activity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "lotFormatId": {
-                    "description": "The set of characters used to specify the method for the parsing of lot numbers.",
+                "reservationPriority": {
+                    "description": "This element is used to determine which orders receive inventory when there is not enough inventory in the warehouse to satisfy all orders for an item number. This option applies only when the order reservation process is used.",
                     "type": [
                         "string",
                         "null"
@@ -1981,306 +2128,80 @@
                         "null"
                     ]
                 },
-                "automaticallyReceiveASN": {
-                    "description": "An indicator that defines whether Advance Ship Notices from this supplier are approved for receiving operations.",
-                    "type": "boolean"
-                },
-                "locationItemInformation": {
-                    "description": "Contains information relevant to the operational needs of items for this location",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationItemInformationType"
-                    }
-                },
-                "locationConsignmentItemOverride": {
-                    "description": "Information about consignment items for this supplier location.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationConsignmentItemOverrideType"
-                    }
-                },
-                "transportEquipmentRestriction": {
-                    "description": "Details regarding the transport equipment restrictions applicable for this location.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationTransportEquipmentRestrictionType"
-                    }
-                },
-                "carrierDetails": {
-                    "description": "Information about carriers for this supplier location.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ShippingCarrierDetailsType"
-                    }
-                },
-                "isTransferHub": {
-                    "description": "An indicator that determines whether this location is a transfer hub.",
-                    "type": "boolean"
-                },
-                "numberParkingSlots": {
-                    "description": "The number of parking slots at this location.",
-                    "type": "integer"
-                },
-                "trailerDoor": {
-                    "$ref": "#/definitions/TrailerDoorType"
-                },
-                "allowBreaksWhileLoading": {
-                    "description": "An indicator that determines whether breaks are allowed while loading at locations of this type.",
-                    "type": "boolean"
-                },
-                "allowLoadToBecomeEmpty": {
-                    "description": "An indicator that determines whether a load can become empty at this location, even if this location is an intermediate stop.",
-                    "type": "boolean"
-                },
-                "assumeTrailerSwap": {
-                    "description": "An indicator that determines whether a trailer swap should be used (incurring 2x fixed time) or whether the vehicle should be unloaded and loaded live.",
-                    "type": "boolean"
-                },
-                "inboundLoadingCode": {
-                    "$ref": "#/definitions/LoadingCodeType"
-                },
-                "outboundLoadingCode": {
-                    "$ref": "#/definitions/LoadingCodeType"
-                },
-                "isFirstStopOnly": {
-                    "description": "An indicator that determines whether this location can only be routed as the first stop on a load or trip.",
-                    "type": "boolean"
-                },
-                "isLastStopOnly": {
-                    "description": "An indicator that determines whether this location can only be routed as the last stop on a load or trip.",
-                    "type": "boolean"
-                },
-                "loadingTimeInformation": {
-                    "description": "An indicator that determines whether this location can only be routed as the last stop on a load or trip.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LocationLoadingTimeInformationType"
-                    }
-                },
-                "maxInboundLoads": {
-                    "description": "The maximum number of inbound loads this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "maxOutboundLoads": {
-                    "description": "The maximum number of outbound loads this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "maxPenalty": {
-                    "description": "The penalty to be applied if the maximum constraint for this location is exceeded.",
-                    "type": "number"
-                },
-                "maxPieces": {
-                    "description": "The maximum number of pieces this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minCube": {
-                    "description": "The minumum cubic volume allowed at this location.",
-                    "type": "number"
-                },
-                "maxCube": {
-                    "description": "The maximum cubic volume allowed at this location.",
-                    "type": "number"
-                },
-                "maxPallets": {
-                    "description": "The maximum number of pallets this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minInboundLoads": {
-                    "description": "The minimum number of inbound loads this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minOutboundLoads": {
-                    "description": "The minimum number of outbound loads this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minPenalty": {
-                    "description": "The penalty to be applied if the minimum constraint for this location is exceeded.",
-                    "type": "number"
-                },
-                "minPieces": {
-                    "description": "The minimum number of pieces this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minPallets": {
-                    "description": "The minimum number of pallets this location can handle during a calendar day.",
-                    "type": "integer"
-                },
-                "minWeight": {
-                    "description": "The minimum weight requirement for this location.",
-                    "type": "number"
-                },
-                "isShipmentConsolidationAllowed": {
-                    "description": "An indicator that determines whether consolidation can occur on inbond loads at this location.",
-                    "type": "boolean"
-                },
-                "maxHandlingTimeDur": {
-                    "description": "The maximum time in minutes it will take at this location to handle goods.",
-                    "type": "number"
-                },
-                "maxPickAndDrop": {
-                    "description": "The maximum physical and monetary dimensions that can be picked up and dropped off at this location.",
-                    "type": "number"
-                },
-                "maxShipmentHoldTimeDur": {
-                    "description": "The maximum time in minutes a shipment can remain at this location.",
-                    "type": "number"
-                },
-                "maxLoadWeight": {
-                    "description": "The maximum weight for loads that stop at this location.",
-                    "type": "number"
-                },
-                "minCrossdockDur": {
-                    "description": "The minimum time in minutes for processing a shipment through this location.",
-                    "type": "number"
-                },
-                "minHandlingTimeDur": {
-                    "description": "The minimum time in minutes it will take at this location to handle goods.",
-                    "type": "number"
-                },
-                "minLeadTimeDur": {
-                    "description": "The minimum time in minutes that must be given as notification of an inbound load to this location.",
-                    "type": "number"
-                },
-                "minStopWeight": {
-                    "description": "The minimum weight for a drop or a pick at this location.",
-                    "type": "number"
-                },
-                "requiredService": {
-                    "description": "The required service at this location.",
+                "shipmentCreationRule": {
+                    "description": "The term by which the business understands the set of rules to follow when creating shipments for customers assigned to this Customer Category.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "earliestPreLoadingEndTimeDur": {
-                    "description": "Specifies the earliest time before carrier arrival that pre-loading handling can end. Pre-loading handling is required for non-live stops at this dock if this value is specified and greater than 0.",
-                    "type": "number"
+                "shipmentLabelId": {
+                    "description": "The set of characters that uniquely references a template or example of the format to be used when creating labels for the shipping of goods for members of this Customer Category.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "latestPreLoadingEndTimeDur": {
-                    "description": "Specifies the latest time before carrier arrival that pre-loading handling can end. Pre-loading handling is required for non-live stops at this dock if earliestPreLoadingEndTimeSpan is specified and greater than 0.",
-                    "type": "number"
+                "storageAreaSize": {
+                    "$ref": "#/definitions/QuantityType"
                 },
-                "earliestPostDischargeStartTimeDur": {
-                    "description": "Specifies the earliest time after carrier departure that post-discharge handling can start. Post-discharge handling is required for non-live stops at this dock if latestPostDischargeStartTimeSpan is specified and greater than 0.",
-                    "type": "number"
+                "trailerDoor": {
+                    "$ref": "#/definitions/TrailerDoorType"
                 },
-                "latestPostDischargeStartTimeDur": {
-                    "description": "Specifies the latest time after carrier departure that post-discharge handling can start. Post-discharge handling is required for non-live stops at this dock if this value is specified and greater than 0.",
-                    "type": "number"
-                },
-                "maxTrailersPerLoad": {
-                    "description": "The maximum number of trailers which can leave or arrive at the location on a load.",
-                    "type": "integer"
-                },
-                "maxTrailersPerDrop": {
-                    "description": "The maximum number of trailers that can be handled at the location. More trailers may arrive at the location, based upon MaxTrailersPerLoad, but only shipments from this number of trailers may unload at the location.",
-                    "type": "integer"
-                },
-                "maxTotalTrailerLength": {
-                    "description": "The maximum total trailer length which is allowed to arrive or depart from the location.",
-                    "type": "number"
-                },
-                "loadingUnloadingTimeCalculationCode": {
-                    "$ref": "#/definitions/LoadingUnloadingTimeCalculationCodeType"
-                },
-                "maxOriginSplits": {
-                    "description": "The maximum number of times a shipment can be split when it originates at this location.",
-                    "type": "integer"
-                },
-                "maxDestinationSplits": {
-                    "description": "The maximum number of times a shipment can be split when it terminates at this location.",
-                    "type": "integer"
-                },
-                "minOriginShipmentWindowDur": {
-                    "description": "The minimum pick window a shipment can have to be split when it originates at this location.",
-                    "type": "number"
-                },
-                "minDestinationShipmentWindowDur": {
-                    "description": "The minimum delivery window a shipment can have to be split when it terminates at this location.",
-                    "type": "number"
-                },
-                "originSplitConstraint": {
-                    "$ref": "#/definitions/SplitConstraintType"
-                },
-                "destinationSplitConstraint": {
-                    "$ref": "#/definitions/SplitConstraintType"
-                },
-                "isOriginRule": {
-                    "description": "An indicator that determines whether the rule applies to shipments that originate at the location.",
-                    "type": "boolean"
-                },
-                "isPercentageRule": {
-                    "description": "An indicator that determines whether the rule is percentage based.",
-                    "type": "boolean"
-                },
-                "minSplitValue": {
-                    "description": "The minimum value the shipment dimension must have for the shipment to be spilt.",
-                    "type": "number"
-                },
-                "minSplitUom": {
-                    "$ref": "#/definitions/ShipmentUomType"
-                },
-                "extensions": {
-                    "$ref": "#/definitions/ExtensionType"
-                },
-                "avpList": {
-                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
-                    "type": "array",
+                "transportEquipmentRestriction": {
+                    "description": "Details regarding the transport equipment restrictions applicable for this location.",
                     "items": {
-                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
-                    }
+                        "$ref": "#/definitions/LocationTransportEquipmentRestrictionType"
+                    },
+                    "type": "array"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "MeasurementType": {
-            "required": [
-                "value"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "Provides measurement value and an associated unit of measure code.",
-                    "type": "number"
-                },
                 "measurementUnitCode": {
                     "description": "Any standardized, reproducible unit that can be used to measure any physical property.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "value": {
+                    "description": "Provides measurement value and an associated unit of measure code.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "MeasurementUnitCode": {
             "type": "string"
         },
         "OperatingHours": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "utcOffset": {
-                    "description": "Numeric value specifying the time zone of the location as offset from the Coordinated Universal Time.",
+                "daylightSavingsOffset": {
+                    "description": "The number of hours offset from the default business hours due to daylight savings time. Usually calculated based on the address of the object the business hours are attached to.",
                     "type": "number"
                 },
                 "regularOperatingHours": {
                     "description": "The period during which a business or facility is operational on a weekday. \n",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/OperatingHoursType"
-                    }
+                    },
+                    "type": "array"
                 },
                 "specialOperatingHours": {
                     "description": "The period during which a business or facility is operational on special days, such as holidays. \n",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/SpecialOperatingHoursType"
-                    }
-                },
-                "daylightSavingsOffset": {
-                    "description": "The number of hours offset from the default business hours due to daylight savings time. Usually calculated based on the address of the object the business hours are attached to.",
-                    "type": "number"
+                    },
+                    "type": "array"
                 },
                 "timeZoneCode": {
                     "description": "A set of characters defined by the Unicode Common Locale Data Repository (CLDR) project that uniquely identifies the time zone (a region of the globe that observes a uniform standard time for legal, commercial and social purposes). E.g. \"America/New_York\".",
@@ -2288,17 +2209,21 @@
                         "string",
                         "null"
                     ]
+                },
+                "utcOffset": {
+                    "description": "Numeric value specifying the time zone of the location as offset from the Coordinated Universal Time.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "OperatingHoursType": {
-            "required": [
-                "dayOfTheWeekCode",
-                "isOperational"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
+                "closingTime": {
+                    "description": "Time at which the business or facility closes on the specified day.",
+                    "type": "string"
+                },
                 "dayOfTheWeekCode": {
                     "$ref": "#/definitions/DayOfTheWeekEnumerationType"
                 },
@@ -2306,37 +2231,29 @@
                     "description": "Indicator specifying whether or not the business or facility is operational on the specified day.\n",
                     "type": "boolean"
                 },
-                "closingTime": {
-                    "description": "Time at which the business or facility closes on the specified day.",
-                    "type": "string"
-                },
                 "openingTime": {
                     "description": "Time at which the business or facility opens on the specified day.",
                     "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "dayOfTheWeekCode",
+                "isOperational"
+            ],
+            "type": "object"
         },
         "PackageTypeCode": {
             "type": "string"
         },
         "ParentPartyType": {
-            "required": [
-                "primaryId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "primaryId": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
                 "additionalPartyId": {
                     "description": "Identifier of the party or location, specified in addition to the GLN.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/AdditionalPartyIdentificationType"
-                    }
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "description": "Name of the party or location.",
@@ -2351,27 +2268,27 @@
                         "string",
                         "null"
                     ]
+                },
+                "primaryId": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
-        },
-        "PartyIdentificationType": {
             "required": [
                 "primaryId"
             ],
-            "type": "object",
+            "type": "object"
+        },
+        "PartyIdentificationType": {
+            "additionalProperties": false,
             "properties": {
-                "primaryId": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
                 "additionalPartyId": {
                     "description": "Identifier of the party or location, specified in addition to the GLN.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/AdditionalPartyIdentificationType"
-                    }
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "description": "Name of the party or location.",
@@ -2379,33 +2296,65 @@
                         "string",
                         "null"
                     ]
+                },
+                "primaryId": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "primaryId"
+            ],
+            "type": "object"
         },
         "PartyRoleCode": {
             "type": "string"
         },
         "PlanningDetailsType": {
-            "nullable": true,
-            "type": "object",
+            "additionalProperties": false,
             "dependencies": {
-                "extensions": {
-                    "not": {
-                        "required": [
-                            "avpList"
-                        ]
-                    }
-                },
                 "avpList": {
                     "not": {
                         "required": [
                             "extensions"
                         ]
                     }
+                },
+                "extensions": {
+                    "not": {
+                        "required": [
+                            "avpList"
+                        ]
+                    }
                 }
             },
+            "nullable": true,
             "properties": {
+                "arrivalCalendarId": {
+                    "description": "The defined working periods that govern arrivals at this location.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "avpList": {
+                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
+                    "items": {
+                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
+                    },
+                    "type": "array"
+                },
+                "beginFreezeDate": {
+                    "description": "\"The beginning date of the freeze period. Valid values include any value less than or equal to Loc:OHPost.ESP(DT) and FulfillmentMaster Planning, Fulfillment/Production, and Fulfillment/Distribution use this value as the beginning date for the freeze period whose duration is specified in SKUPlanningParam:MfgFrzDur or SKUPlanningParam:DRPFrzDur. If FrzStart is blank, the system uses the value in Loc:OHPost instead. If that is also blank, the system uses SKU:OHPost if it has a value. If not, it uses the current system date.For ESP(DT), the freeze period starts at the planning period start date.\"",
+                    "format": "date-time",
+                    "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.\\d\\d?\\d?)?(([+-]\\d{2}:\\d{2})|Z)",
+                    "type": "string"
+                },
+                "borrowingPercentage": {
+                    "description": "Represents the rate that would be paid if money were borrowed to purchase additional inventory.  90 percent should be put as 90.",
+                    "type": "number"
+                },
                 "calendarId": {
                     "description": "Working Calendar Identifier.",
                     "type": [
@@ -2413,9 +2362,30 @@
                         "null"
                     ]
                 },
+                "extensions": {
+                    "$ref": "#/definitions/ExtensionType"
+                },
+                "isArrivalCalendarEnabled": {
+                    "description": "An indicator that identifies whether the calendar used for arrival operations is approved to be referenced.",
+                    "type": "boolean"
+                },
                 "isCalendarEnabled": {
                     "description": "An indicator that identifies whether the working calendar is approved to be referenced.",
                     "type": "boolean"
+                },
+                "isInventoryProjectionRequired": {
+                    "description": "Determines whether inventory projection calculations should be performed for this location.",
+                    "type": "boolean"
+                },
+                "isShippingCalendarEnabled": {
+                    "description": "An indicator that identifies whether the calendar used for shipping operations is approved to be referenced.",
+                    "type": "boolean"
+                },
+                "lastOnHandPostDate": {
+                    "description": "The last time current on hand was posted for this location.",
+                    "format": "date-time",
+                    "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.\\d\\d?\\d?)?(([+-]\\d{2}:\\d{2})|Z)",
+                    "type": "string"
                 },
                 "shippingCalendarId": {
                     "description": "The defined working periods that govern shipping activity at this location.",
@@ -2424,112 +2394,89 @@
                         "null"
                     ]
                 },
-                "isShippingCalendarEnabled": {
-                    "description": "An indicator that identifies whether the calendar used for shipping operations is approved to be referenced.",
-                    "type": "boolean"
-                },
-                "arrivalCalendarId": {
-                    "description": "The defined working periods that govern arrivals at this location.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "isArrivalCalendarEnabled": {
-                    "description": "An indicator that identifies whether the calendar used for arrival operations is approved to be referenced.",
-                    "type": "boolean"
-                },
-                "borrowingPercentage": {
-                    "description": "Represents the rate that would be paid if money were borrowed to purchase additional inventory.  90 percent should be put as 90.",
-                    "type": "number"
-                },
-                "beginFreezeDate": {
-                    "description": "\"The beginning date of the freeze period. Valid values include any value less than or equal to Loc:OHPost.ESP(DT) and FulfillmentMaster Planning, Fulfillment/Production, and Fulfillment/Distribution use this value as the beginning date for the freeze period whose duration is specified in SKUPlanningParam:MfgFrzDur or SKUPlanningParam:DRPFrzDur. If FrzStart is blank, the system uses the value in Loc:OHPost instead. If that is also blank, the system uses SKU:OHPost if it has a value. If not, it uses the current system date.For ESP(DT), the freeze period starts at the planning period start date.\"",
-                    "type": "string",
-                    "format": "date-time",
-                    "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.\\d\\d?\\d?)?(([+-]\\d{2}:\\d{2})|Z)"
-                },
-                "lastOnHandPostDate": {
-                    "description": "The last time current on hand was posted for this location.",
-                    "type": "string",
-                    "format": "date-time",
-                    "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.\\d\\d?\\d?)?(([+-]\\d{2}:\\d{2})|Z)"
-                },
                 "weatherArea": {
                     "description": "A unique identifier of an area which is impacted by weather.",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
-                "isInventoryProjectionRequired": {
-                    "description": "Determines whether inventory projection calculations should be performed for this location.",
-                    "type": "boolean"
-                },
-                "extensions": {
-                    "$ref": "#/definitions/ExtensionType"
-                },
-                "avpList": {
-                    "description": "Deprecated, use 'extensions' instead. The placeholder for non-standard data.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EcomStringAttributeValuePairListType"
-                    }
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "ProcessingTimeType": {
+            "additionalProperties": false,
+            "properties": {
+                "maximumDurationInMinutes": {
+                    "description": "This is the maximum time that takes to process fulfillment at this location.",
+                    "type": "integer"
+                },
+                "minimumDurationInMinutes": {
+                    "description": "This is the minimum time that takes to process fulfillment at this location.",
+                    "type": "integer"
+                }
+            },
             "required": [
                 "minimumDurationInMinutes",
                 "maximumDurationInMinutes"
             ],
-            "type": "object",
-            "properties": {
-                "minimumDurationInMinutes": {
-                    "description": "This is the minimum time that takes to process fulfillment at this location.",
-                    "type": "integer"
-                },
-                "maximumDurationInMinutes": {
-                    "description": "This is the maximum time that takes to process fulfillment at this location.",
-                    "type": "integer"
-                }
-            },
-            "additionalProperties": false
+            "type": "object"
         },
         "QuantityType": {
-            "required": [
-                "value"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "Provides quantity value and an associated unit of measure code.",
-                    "type": "number"
-                },
                 "measurementUnitCode": {
                     "description": "Any standardized, reproducible unit that can be used to measure any physical property.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "value": {
+                    "description": "Provides quantity value and an associated unit of measure code.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "RetailCategoryCode": {
             "type": "string"
         },
         "RetailDetailsType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
-                "storeFormat": {
-                    "description": "Store Format e.g. Convenience, Fuel Station, Traditional.",
+                "annualSalesRevenue": {
+                    "description": "The total annual sales revenue amount for this location.",
+                    "type": "number"
+                },
+                "buildingAreaSize": {
+                    "$ref": "#/definitions/QuantityType"
+                },
+                "categoryCode": {
+                    "description": "Various category flags for this store, e.g. IS_RURAL, IS_FLAGSHIP.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
+                },
+                "competition": {
+                    "description": "Information regarding competitive locations.",
+                    "items": {
+                        "$ref": "#/definitions/CompetitionType"
+                    },
+                    "type": "array"
+                },
+                "deliveryStartDate": {
+                    "description": "The date when the location started delivering orders to the customer address.",
+                    "format": "date",
+                    "type": "string"
                 },
                 "demandChannel": {
                     "description": "Channel for this store e.g. Omni, Traditional.",
@@ -2538,12 +2485,6 @@
                         "null"
                     ]
                 },
-                "salesAreaSize": {
-                    "$ref": "#/definitions/QuantityType"
-                },
-                "buildingAreaSize": {
-                    "$ref": "#/definitions/QuantityType"
-                },
                 "demography": {
                     "description": "The core demographic for this store e.g. College, Early, Professional, Established, Professional, Retired.",
                     "type": [
@@ -2551,67 +2492,44 @@
                         "null"
                     ]
                 },
-                "categoryCode": {
-                    "description": "Various category flags for this store, e.g. IS_RURAL, IS_FLAGSHIP.",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "competition": {
-                    "description": "Information regarding competitive locations.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/CompetitionType"
-                    }
-                },
-                "remodelDate": {
-                    "description": "The date when this store was remodelled.",
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "format": "date"
-                    }
-                },
-                "deliveryStartDate": {
-                    "description": "The date when the location started delivering orders to the customer address.",
-                    "type": "string",
-                    "format": "date"
-                },
                 "driveUpServiceStartDate": {
                     "description": "The date when the location started drive up service for the customers to pick up the online orders.",
-                    "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "type": "string"
+                },
+                "isAvailableForAllocation": {
+                    "description": "Value is set to true to allow allocation of merchandise to this location.",
+                    "type": "boolean"
                 },
                 "parkingCapacity": {
                     "description": "The capacity of the parking space at location.",
                     "type": "number"
                 },
-                "annualSalesRevenue": {
-                    "description": "The total annual sales revenue amount for this location.",
-                    "type": "number"
+                "remodelDate": {
+                    "description": "The date when this store was remodelled.",
+                    "items": {
+                        "format": "date",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
-                "isAvailableForAllocation": {
-                    "description": "Value is set to true to allow allocation of merchandise to this location.",
-                    "type": "boolean"
-                }
-            },
-            "additionalProperties": false
-        },
-        "RouteScheduleType": {
-            "nullable": true,
-            "type": "object",
-            "properties": {
-                "routeId": {
-                    "description": "The set of characters that uniquely references the transportation movement that is assigned to deliver goods to this store.",
+                "salesAreaSize": {
+                    "$ref": "#/definitions/QuantityType"
+                },
+                "storeFormat": {
+                    "description": "Store Format e.g. Convenience, Fuel Station, Traditional.",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
+                }
+            },
+            "type": "object"
+        },
+        "RouteScheduleType": {
+            "additionalProperties": false,
+            "nullable": true,
+            "properties": {
                 "beginDay": {
                     "$ref": "#/definitions/DayOfTheWeekEnumerationType"
                 },
@@ -2626,74 +2544,45 @@
                     "description": "The hour and minute of the end day on which the route is scheduled to complete its delivery runs.",
                     "type": "string"
                 },
+                "routeId": {
+                    "description": "The set of characters that uniquely references the transportation movement that is assigned to deliver goods to this store.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "stopNumber": {
                     "description": "The numeric position in the route for this store to be delivered.",
                     "type": "integer"
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "SegmentActionEnumerationType": {
-            "type": "string",
             "enum": [
                 "ADD",
                 "CHANGE",
                 "DELETE",
                 "NO_ACTION"
-            ]
+            ],
+            "type": "string"
         },
         "ShipFromType": {
-            "required": [
-                "primaryId"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "primaryId": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
                 },
                 "additionalPartyId": {
                     "description": "Identifier of the location, specified in addition to the GLN.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/AdditionalPartyIdentificationType"
-                    }
-                },
-                "name": {
-                    "description": "Name of the location.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                    },
+                    "type": "array"
                 },
                 "isDefaultShipFromLocation": {
                     "description": "Is this the default shipping warehouse for this store.",
                     "type": "boolean"
-                }
-            },
-            "additionalProperties": false
-        },
-        "ShipToType": {
-            "required": [
-                "primaryId"
-            ],
-            "type": "object",
-            "properties": {
-                "primaryId": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "minLength": 1
-                },
-                "additionalPartyId": {
-                    "description": "Identifier of the location, specified in addition to the GLN.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/AdditionalPartyIdentificationType"
-                    }
                 },
                 "name": {
                     "description": "Name of the location.",
@@ -2702,46 +2591,44 @@
                         "null"
                     ]
                 },
-                "actionCode": {
-                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                "primaryId": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "primaryId"
+            ],
+            "type": "object"
         },
         "ShipmentUomType": {
-            "type": "string",
             "enum": [
                 "WEIGHT",
                 "CUBE",
                 "PALLETS",
                 "PIECES",
                 "UNITS"
-            ]
+            ],
+            "type": "string"
         },
         "ShippingCarrierDetailsType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
                 "carrierId": {
                     "description": "A set of characters that uniquely references a carrier who is the provider of freight services. The carrier is an entity that provides the required equipment and moves shipments on behalf of the shipper or third party logistics provider.",
+                    "maxLength": 16,
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
-                    ],
-                    "maxLength": 16,
-                    "minLength": 1
+                    ]
                 },
                 "carrierName": {
                     "description": "The word or term by which the carrier is known.",
-                    "type": [
-                        "string",
-                        "null"
-                    ],
                     "maxLength": 128,
-                    "minLength": 1
-                },
-                "parcelBillingId": {
-                    "description": "The set of characters that uniquely references the party responsible for parcel billing.",
+                    "minLength": 1,
                     "type": [
                         "string",
                         "null"
@@ -2749,56 +2636,101 @@
                 },
                 "demurrage": {
                     "description": "Information about the demurrage charges that are levied by the port officials to the carrier.",
-                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/DemurrageType"
-                    }
+                    },
+                    "type": "array"
+                },
+                "parcelBillingId": {
+                    "description": "The set of characters that uniquely references the party responsible for parcel billing.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
+        },
+        "ShipToType": {
+            "additionalProperties": false,
+            "properties": {
+                "actionCode": {
+                    "$ref": "#/definitions/SegmentActionEnumerationType"
+                },
+                "additionalPartyId": {
+                    "description": "Identifier of the location, specified in addition to the GLN.",
+                    "items": {
+                        "$ref": "#/definitions/AdditionalPartyIdentificationType"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Name of the location.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primaryId": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "primaryId"
+            ],
+            "type": "object"
         },
         "SpecialOperatingHoursType": {
-            "required": [
-                "isOperational",
-                "specialDate"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "isOperational": {
-                    "description": "Indicator specifying whether or not the business or facility is operational on the specified day.\n",
-                    "type": "boolean"
-                },
-                "specialDate": {
-                    "description": "Date specifying the day to which the special operating hours apply.\n",
-                    "type": "string",
-                    "format": "date"
-                },
                 "closingTime": {
                     "description": "Time on which the business or facility will close on the specified day.\n",
                     "type": "string"
                 },
+                "isOperational": {
+                    "description": "Indicator specifying whether or not the business or facility is operational on the specified day.\n",
+                    "type": "boolean"
+                },
                 "openingTime": {
                     "description": "Time on which the business or facility will open on the specified day.\n",
+                    "type": "string"
+                },
+                "specialDate": {
+                    "description": "Date specifying the day to which the special operating hours apply.\n",
+                    "format": "date",
                     "type": "string"
                 },
                 "specialDateName": {
                     "$ref": "#/definitions/Description80Type"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "isOperational",
+                "specialDate"
+            ],
+            "type": "object"
         },
         "SplitConstraintType": {
-            "type": "string",
             "enum": [
                 "UNCONSTRAINED",
                 "LOCATION",
                 "OPT_LEVEL"
-            ]
+            ],
+            "type": "string"
         },
         "StoreStagingLocationType": {
+            "additionalProperties": false,
             "nullable": true,
-            "type": "object",
             "properties": {
+                "destinationLocation": {
+                    "description": "The specific area in the distribution center in which goods for this store will be collected prior to shipping.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "destinationMovementZoneId": {
                     "description": "The set of characters that uniquely refers to a specific floor space in the distribution center at which goods for this store are to be collected.",
                     "type": [
@@ -2810,13 +2742,6 @@
                     "description": "A number corresponding to this store's position in a floor area.",
                     "type": "integer"
                 },
-                "destinationLocation": {
-                    "description": "The specific area in the distribution center in which goods for this store will be collected prior to shipping.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "sourceBuildingId": {
                     "description": "The set of characters that uniquely refers to the building at which the goods to be collected for this store originated.",
                     "type": [
@@ -2825,27 +2750,27 @@
                     ]
                 }
             },
-            "additionalProperties": false
+            "type": "object"
         },
         "TimeMeasurementType": {
-            "required": [
-                "value"
-            ],
-            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "value": {
-                    "description": "Provides time measurement value and an associated unit of measure code.",
-                    "type": "number"
-                },
                 "timeMeasurementUnitCode": {
                     "description": "Any standardized, reproducible unit that can be used to measure any physical property.",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "value": {
+                    "description": "Provides time measurement value and an associated unit of measure code.",
+                    "type": "number"
                 }
             },
-            "additionalProperties": false
+            "required": [
+                "value"
+            ],
+            "type": "object"
         },
         "TimeMeasurementUnitCode": {
             "type": "string"
@@ -2854,33 +2779,33 @@
             "type": "string"
         },
         "TrailerDoorType": {
-            "type": "string",
             "enum": [
                 "BOTH",
                 "SIDE_DOOR",
                 "NEAR_TAIL"
-            ]
+            ],
+            "type": "string"
         }
     },
     "description": "A message used to define a vendor, plant, distribution center, warehouse, store, or other similar location.  A location can also be used to represent a virtual location, such as an on-line store.",
-    "required": [
-        "header",
-        "location"
-    ],
-    "type": "object",
     "properties": {
         "header": {
             "$ref": "#/definitions/HeaderType"
         },
         "location": {
             "description": "Defines a vendor, plant, distribution center, warehouse, store, or other similar location, can also represent a virtual location.",
-            "type": "array",
             "items": {
                 "$ref": "#/definitions/LocationType"
-            }
+            },
+            "type": "array"
         }
     },
-    "additionalProperties": false,
+    "required": [
+        "header",
+        "location"
+    ],
+    "title": "location",
+    "type": "object",
     "location": [
         {
             "locationId": "0000100000",
@@ -2959,76 +2884,20 @@
             }
         }
     ],
-    "unmappedSegments": [
-        {
-            "EDI_DC40": {
-                "EDI_DC40": {
-                    "TABNAM": "EDI_DC40",
-                    "MANDT": "100",
-                    "DOCNUM": "00000000000098765432",
-                    "DIRECT": "2",
-                    "OUTMOD": "2",
-                    "IDOCTYP": "DEBMAS06",
-                    "MESTYP": "DEBMAS",
-                    "SNDPOR": "SAPECC",
-                    "SNDPRT": "LS",
-                    "SNDPRN": "SAP_SYSTEM",
-                    "RCVPOR": "BY_TMS",
-                    "RCVPRT": "LS",
-                    "RCVPRN": "BY_TMS_SYSTEM",
-                    "@SEGMENT": "1"
-                }
-            }
-        }
-    ],
-    "unmappedSummary": {
-        "EDI_DC40": 1
-    },
-    "mappingUsage": {
-        "location.0.locationId": 1,
-        "location.0.basicLocation.address.countryCode": 1,
-        "location.0.parentParty.name": 1,
-        "location.0.basicLocation.address.city": 1,
-        "location.0.basicLocation.address.postalCode": 1,
-        "location.0.basicLocation.address.state": 1,
-        "location.0.basicLocation.address.streetAddressOne": 1,
-        "location.0.basicLocation.contact.0.communicationChannel.0.communicationValue": 3,
-        "location.0.basicLocation.shipFromLocations.shipFrom.0.primaryId": 1,
-        "location.0.basicLocation.description.languageCode": 1,
-        "location.0.sales.organization": 1,
-        "location.0.sales.channel": 1,
-        "location.0.sales.division": 1,
-        "location.0.sales.partnerFunctions.partySold": 2,
-        "location.0.sales.partnerFunctions.partnerNumber": 2,
-        "location.0.financial.companyCode": 1,
-        "location.0.financial.reconciliationAccount": 1,
-        "location.0.financial.sortKey": 1,
-        "location.0.basicLocation.contact.0.personName": 1,
-        "location.0.basicLocation.contact.0.honorific": 1,
-        "location.0.basicLocation.contact.0.personFirstName": 1,
-        "location.0.logisticDetails.carrier.primaryId": 1,
-        "location.0.logisticDetails.shipmentCreationRule": 1,
-        "location.0.logisticDetails.shippingZone": 1,
-        "location.0.logisticDetails.shippingRoute": 1,
-        "location.0.logisticDetails.transportationType": 1,
-        "location.0.financial.bankDetails.bankKey": 1,
-        "location.0.financial.bankDetails.bankCountryKey": 1,
-        "location.0.financial.bankDetails.bankAccountNumber": 1,
-        "location.0.financial.bankDetails.bankAccountType": 1,
-        "location.0.financial.taxDetails.taxCategory": 1,
-        "location.0.financial.taxDetails.taxNumber": 1
-    },
-    "llmMappingSuggestions": {
-        "EDI_DC40": "<think>\nAlright, I need to help map the given XML segment into a BYDM structure using typical SAP IDoc elements. The provided JSON has keys like \"TABNAM\", \"MANDT\", and others. \n\nFirst, I should identify which fields correspond to standard SAP IDoc elements. For example, \"TABNAM\" is usually \"EDI_DC40\", so that can map directly. \"MANDT\" is the message type, which would be \"DEBMAS06\".\n\nNext, looking at the structure, I think it's a DEBMAS segment with a BYDM subsegment. The fields like \"DOCNUM\" might correspond to \"DOC_NUM\". \"DIRECT\" and \"OUTMOD\" could map to \"DIS_TO\" and \"OUT_MOD\" respectively.\n\nI also notice some fields like \"IDOCTYP\", which is the document type, so that would be \"DOCTYPE\". The sender and receiver information can be mapped using standard SAP field mappings like \"SND_POR\", \"RCV_POR\", etc.\n\nThe \"@SEGMENT\" field might need to be handled carefully since it's an internal tag. I'll map it to \"SEG_NO\".\n\nPutting this all together, I'll structure the JSON with a top-level \"DEBMAS\" object containing the subsegments like \"BYDM\". Each subsegment will have their respective fields mapped appropriately.\n\nI should ensure that each key in the subsegment matches typical SAP IDoc field names. For example, \"DOC_NUM\", \"DIS_TO\", and \"OUT_MOD\" are standard for document numbers, direction, and output mode.\n\nDouble-checking to make sure all fields from the original JSON are correctly translated into their corresponding IDoc elements without missing any.\n\nSo, the final structure should have DEBMAS as the top-level with BYDM containing all necessary subfields mapped properly.\n</think>\n\nTo map the given XML segment to a BYDM structure using typical SAP IDoc elements, we can create a JSON configuration that defines the mapping. Here's the suggested JSON snippet:\n\n```json\n{\n  \"DEBMAS\": {\n    \"BYDM\": {\n      \"TABNAM\": \"EDIDC40\",\n      \"MANDT\": \"100\",\n      \"DOCNUM\": \"DOC_NUM\",\n      \"DIRECT\": \"DIS_TO\",\n      \"OUTMOD\": \"OUT_MOD\",\n      \"IDOCTYP\": \"DOCTYPE\",\n      \"MESTYP\": \"ME_TYPE\",\n      \"SNDPOR\": \"SEND_POR\",\n      \"SNDPRT\": \"SEND_PRD\",\n      \"SNDPRN\": \"SEND_PRN\",\n      \"RCVPOR\": \"RCV_POR\",\n      \"RCVPRT\": \"RCV_PRD\",\n      \"RCVPRN\": \"RCV_PRN\",\n      \"@SEGMENT\": \"SEG_NO\"\n    }\n  }\n}\n```\n\nThis JSON mapping configures the XML structure into a BYDM segment with corresponding SAP IDoc fields."
-    },
-    "sapMetadata": {
-        "EDI_DC40": {
-            "expectedFields": [
-                "FIELD1",
-                "FIELD2",
-                "FIELD3"
-            ],
-            "description": "Metadata for EDI_DC40 from SAP system."
-        }
+    "unmappedSegments": [],
+    "header": {
+        "tabnam": "EDI_DC40",
+        "mandt": "100",
+        "docnum": "00000000000098765432",
+        "direct": "2",
+        "outmod": "2",
+        "idoctyp": "DEBMAS06",
+        "mestyp": "DEBMAS",
+        "sndpor": "SAPECC",
+        "sndprt": "LS",
+        "sndprn": "SAP_SYSTEM",
+        "rcvpor": "BY_TMS",
+        "rcvprt": "LS",
+        "rcvprn": "BY_TMS_SYSTEM"
     }
 }
