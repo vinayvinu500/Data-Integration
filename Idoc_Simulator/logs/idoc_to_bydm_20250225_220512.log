@@ -1,0 +1,193 @@
+2025-02-25 22:05:12,748 - INFO - Starting IDoc to BYDM JSON conversion
+2025-02-25 22:05:12,902 - WARNING - No mapping found for segment 'EDI_DC40'
+2025-02-25 22:05:12,902 - INFO - Mapped 'KUNNR' -> 'location.0.locationId', Value: '0000100000'
+2025-02-25 22:05:12,902 - INFO - Mapped 'LAND1' -> 'location.0.basicLocation.address.countryCode', Value: 'United States'
+2025-02-25 22:05:12,903 - INFO - Mapped 'NAME1' -> 'location.0.parentParty.name', Value: 'ABC Logistics Inc.'
+2025-02-25 22:05:12,904 - INFO - Mapped 'ORT01' -> 'location.0.basicLocation.address.city', Value: 'New York'
+2025-02-25 22:05:12,906 - INFO - Mapped 'PSTLZ' -> 'location.0.basicLocation.address.postalCode', Value: '10001'
+2025-02-25 22:05:12,906 - INFO - Mapped 'REGIO' -> 'location.0.basicLocation.address.state', Value: 'NY'
+2025-02-25 22:05:12,907 - INFO - Mapped 'STRAS' -> 'location.0.basicLocation.address.streetAddressOne', Value: '123 Main Street'
+2025-02-25 22:05:12,907 - INFO - Mapped 'TELF1' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: '+1 555 123 4567'
+2025-02-25 22:05:12,907 - INFO - Mapped 'LIFNR' -> 'location.0.basicLocation.shipFromLocations.shipFrom.0.primaryId', Value: '0000100000'
+2025-02-25 22:05:12,907 - INFO - Mapped 'SPRAS' -> 'location.0.basicLocation.description.languageCode', Value: 'EN'
+2025-02-25 22:05:12,907 - INFO - Mapped 'VKORG' -> 'location.0.sales.organization', Value: '1000'
+2025-02-25 22:05:12,907 - INFO - Mapped 'VTWEG' -> 'location.0.sales.channel', Value: '10'
+2025-02-25 22:05:12,908 - INFO - Mapped 'SPART' -> 'location.0.sales.division', Value: '00'
+2025-02-25 22:05:12,908 - INFO - Mapped 'PARVW' -> 'location.0.sales.partnerFunctions.partySold', Value: 'AG'
+2025-02-25 22:05:12,908 - INFO - Mapped 'KUNNR' -> 'location.0.sales.partnerFunctions.partnerNumber', Value: '0000100000'
+2025-02-25 22:05:12,908 - INFO - Mapped 'PARVW' -> 'location.0.sales.partnerFunctions.partySold', Value: 'WE'
+2025-02-25 22:05:12,908 - INFO - Mapped 'KUNNR' -> 'location.0.sales.partnerFunctions.partnerNumber', Value: '0000100001'
+2025-02-25 22:05:12,909 - INFO - Mapped 'BUKRS' -> 'location.0.financial.companyCode', Value: '1000'
+2025-02-25 22:05:12,909 - INFO - Mapped 'AKONT' -> 'location.0.financial.reconciliationAccount', Value: '140000'
+2025-02-25 22:05:12,909 - INFO - Mapped 'ZUAWA' -> 'location.0.financial.sortKey', Value: '0001'
+2025-02-25 22:05:12,909 - INFO - Mapped 'PARNR' -> 'location.0.basicLocation.contact.0.personName', Value: '000100'
+2025-02-25 22:05:12,909 - INFO - Mapped 'NAMEV' -> 'location.0.basicLocation.contact.0.honorific', Value: 'Mr.'
+2025-02-25 22:05:12,909 - INFO - Mapped 'NAME1' -> 'location.0.basicLocation.contact.0.personFirstName', Value: 'John Doe'
+2025-02-25 22:05:12,909 - INFO - Mapped 'TELF1' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: '+1 555 987 6543'
+2025-02-25 22:05:12,909 - INFO - Mapped 'SMTP_ADDR' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: 'john.doe@abclogistics.com'
+2025-02-25 22:05:12,909 - INFO - Mapped 'LIFNR' -> 'location.0.logisticDetails.carrier.primaryId', Value: '0000100001'
+2025-02-25 22:05:12,910 - INFO - Mapped 'VSART' -> 'location.0.logisticDetails.shipmentCreationRule', Value: '01'
+2025-02-25 22:05:12,910 - INFO - Mapped 'LZONE' -> 'location.0.logisticDetails.shippingZone', Value: '0001'
+2025-02-25 22:05:12,910 - INFO - Mapped 'ROUTE' -> 'location.0.logisticDetails.shippingRoute', Value: '0001'
+2025-02-25 22:05:12,910 - INFO - Mapped 'TRATY' -> 'location.0.logisticDetails.transportationType', Value: '01'
+2025-02-25 22:05:12,910 - INFO - Mapped 'BANKL' -> 'location.0.financial.bankDetails.bankKey', Value: '00123456'
+2025-02-25 22:05:12,910 - INFO - Mapped 'BANKS' -> 'location.0.financial.bankDetails.bankCountryKey', Value: 'US'
+2025-02-25 22:05:12,910 - INFO - Mapped 'BANKN' -> 'location.0.financial.bankDetails.bankAccountNumber', Value: '123456789'
+2025-02-25 22:05:12,910 - INFO - Mapped 'BVTYP' -> 'location.0.financial.bankDetails.bankAccountType', Value: '001'
+2025-02-25 22:05:12,911 - INFO - Mapped 'TAXKD' -> 'location.0.financial.taxDetails.taxCategory', Value: 'US1'
+2025-02-25 22:05:12,911 - INFO - Mapped 'TAXKN' -> 'location.0.financial.taxDetails.taxNumber', Value: '123456789'
+2025-02-25 22:05:12,911 - INFO - IDoc successfully parsed from C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\source\Cust Locations IDOC.xml
+2025-02-25 22:05:22,483 - INFO - Loaded plugin: C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\extensions\plugin_llm_mapping.py
+2025-02-25 22:05:22,487 - INFO - Loaded plugin: C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\extensions\plugin_sap_metadata.py
+2025-02-25 22:05:22,487 - INFO - Running post_process in plugin: plugin
+2025-02-25 22:05:22,487 - INFO - Generating suggestion for unmapped segment 'EDI_DC40'
+2025-02-25 22:42:45,504 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-02-25 22:42:45,550 - INFO - <think>
+Okay, I'm trying to figure out how to map the given XML segment into the BYDM JSON format using the provided E1 keys. Let me start by understanding what each part is.
+
+First, the input is an XML segment converted to JSON with key "EDI_DC40". Inside this object, there are various fields like "TABNAM", "MANDT", etc., and a "@SEGMENT" field. The goal is to map these into BYDM format using E1 keys provided earlier.
+
+Looking at the E1 keys:
+- E1KNA1M has KUNNR, LAND1, NAME1, ORT01, PSTLZ, REGIO, STRAS, TELF1, LIFNR, SPRAS.
+- E1KNVVM: VKORG, VTWEG, SPART, E1KNVPM.
+- E1KNB1M: BUKRS, AKONT, ZUAWA.
+- E1KNVKM: PARNR, NAMEV, NAME1, TELF1, SMTP_ADDR.
+- E1KNVFM: LIFNR, VSART, LZONE, ROUTE, TRATY.
+- E1KNBAT: BANKL, BANKS, BANKN, BVTYP.
+- E1KNZ1M: TAXKD, TAXKN.
+
+Now, looking at the JSON input:
+{
+  "EDI_DC40": {
+    "TABNAM": "EDI_DC40",
+    "MANDT": "100",
+    "DOCNUM": "00000000000098765432",
+    "DIRECT": "2",
+    "OUTMOD": "2",
+    "IDOCTYP": "DEBMAS06",
+    "MESTYP": "DEBMAS",
+    "SNDPOR": "SAPECC",
+    "SNDPRT": "LS",
+    "SNDPRN": "SAP_SYSTEM",
+    "RCVPOR": "BY_TMS",
+    "RCVPRT": "LS",
+    "RCVPRN": "BY_TMS_SYSTEM",
+    "@SEGMENT": "1"
+  }
+}
+
+I need to map these fields into BYDM format. Let me think about which E1 keys correspond to each field.
+
+TABNAM is likely a custom key, maybe something like "TABNAM" in the JSON output. MANDT is probably "MANDT". DOCNUM might be "DOCNUM", but I'm not sure if it maps directly or needs another key. DIRECT and OUTMOD might map under E1KNVVM because they relate to sending and receiving parties, perhaps VKORG and VTWEG? 
+
+IDOCTYP is DEBMAS06, which could correspond to a specific document type, maybe "DOCTYPE". MESTYP is DEBMAS, so that's the message type.
+
+SNDPOR is SAPECC, which might map to SNDPRN in E1KNVVM. Wait, no, SNDPRN is already a field. Maybe SNDPOR is part of another mapping. Similarly, RCVPRN could be related to RCVPRT and RCVPOR.
+
+The "@SEGMENT" field indicates it's the first segment, so that would map under "segment" in BYDM as 1.
+
+Looking at the E1KNB1M: BUKRS is company code, which isn't present here. AKONT might be Controlling, but not sure if needed.
+
+E1KNA1M includes KUNNR (customer number), LAND1 (country key), NAME1 (name), ORT01 (city), PSTLZ (postal zone), REGIO (region), STRAS (street), TELF1 (telephone), LIFNR (partner number), SPRAS (language).
+
+In the JSON, there's no KUNNR or other E1KNA1M fields. So maybe we don't have them in this particular mapping.
+
+E1KNVKM has PARNR, which is partner number, NAMEV for name variant, etc. Maybe some of these fields could be mapped if needed.
+
+E1KNZ1M has TAXKD and TAXKN, but those aren't present here either.
+
+So, focusing on the provided JSON fields:
+
+- TABNAM: straightforward.
+- MANDT: company code, probably maps to BUKRS in E1KNB1M.
+- DOCNUM: document number. I'm not sure which E1 key corresponds to this, maybe it's a custom field.
+- DIRECT and OUTMOD: these might be part of the communication details, possibly under E1KNVVM as VKORG or VTWEG.
+- IDOCTYP: DEBMAS06, perhaps "DOCTYPE" in BYDM.
+- MESTYP: message type, maybe "MESSAGE_TYPE".
+- SNDPOR, SNDPRT, SNDPRN: sender details. SNDPRT is 'LS', which might correspond to E1KNVVM's VTWEG (e.g., LS for local).
+- RCVPOR, RCVPRN: recipient details.
+- "@SEGMENT": 1.
+
+Putting this together, the mapping could include:
+
+- company_code as BUKRS if present, but it's not in the JSON.
+- segment: 1.
+- document_type as IDOCTYP.
+- message_type as MESTYP.
+- sender_parties and recipient_parties mapped using relevant E1 keys.
+
+I think for this case, since the JSON doesn't have many fields beyond what's provided, we can map them directly where possible. So, in BYDM, it might look like:
+
+{
+  "message": {
+    "company_code": "MANDT",
+    "segment": "@SEGMENT",
+    "document_type": "IDOCTYP",
+    "message_type": "MESTYP",
+    "sender": {
+      "party": "SNDPOR",
+      "party_type": "SNDPRT",
+      "name": "SNDPRN"
+    },
+    "recipient": {
+      "party": "RCVPOR",
+      "party_type": "RCVPRT",
+      "name": "RCVPRN"
+    }
+  }
+}
+
+But I'm not entirely sure about the structure. Maybe it's better to map each field individually where possible, using the E1 keys as appropriate.
+
+Wait, but in BYDM, it's common to have fields like company_code, segment, document_type, message_type, sender_party (with type and name), recipient_party similarly.
+
+So perhaps:
+
+{
+  "message": {
+    "company_code": "MANDT",
+    "segment": "@SEGMENT",
+    "document_type": "IDOCTYP",
+    "message_type": "MESTYP",
+    "sender": {
+      "party": "SNDPOR",
+      "type": "SNDPRT",
+      "name": "SNDPRN"
+    },
+    "recipient": {
+      "party": "RCVPOR",
+      "type": "RCVPRT",
+      "name": "RCVPRN"
+    }
+  }
+}
+
+This makes sense. Each field is mapped to the corresponding BYDM structure using E1 keys where appropriate.
+</think>
+
+Here's a JSON mapping configuration snippet that maps the provided XML segment into the BYDM format, utilizing the given E1 keys:
+
+```json
+{
+  "message": {
+    "company_code": "MANDT",
+    "segment": "@SEGMENT",
+    "document_type": "IDOCTYP",
+    "message_type": "MESTYP",
+    "sender": {
+      "party": "SNDPOR",
+      "type": "SNDPRT",
+      "name": "SNDPRN"
+    },
+    "recipient": {
+      "party": "RCVPOR",
+      "type": "RCVPRT",
+      "name": "RCVPRN"
+    }
+  }
+}
+```
+
+This mapping configures the JSON input into a structure that aligns with the expected BYDM format, including company code, segment information, document type, message type, sender details, and recipient details.
+2025-02-25 22:42:45,711 - INFO - LLM mapping suggestions added to output JSON.
+2025-02-25 22:42:45,717 - INFO - Running post_process in plugin: plugin

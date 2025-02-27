@@ -1,0 +1,45 @@
+2025-02-25 15:48:34,494 - INFO - Starting IDoc to BYDM JSON conversion
+2025-02-25 15:48:34,502 - WARNING - No mapping found for segment 'EDI_DC40'
+2025-02-25 15:48:34,502 - INFO - Mapped 'KUNNR' -> 'location.0.locationId', Value: '0000100000'
+2025-02-25 15:48:34,503 - INFO - Mapped 'LAND1' -> 'location.0.basicLocation.address.countryCode', Value: 'United States'
+2025-02-25 15:48:34,503 - INFO - Mapped 'NAME1' -> 'location.0.parentParty.name', Value: 'ABC Logistics Inc.'
+2025-02-25 15:48:34,503 - INFO - Mapped 'ORT01' -> 'location.0.basicLocation.address.city', Value: 'New York'
+2025-02-25 15:48:34,530 - INFO - Mapped 'PSTLZ' -> 'location.0.basicLocation.address.postalCode', Value: '10001'
+2025-02-25 15:48:34,531 - INFO - Mapped 'REGIO' -> 'location.0.basicLocation.address.state', Value: 'NY'
+2025-02-25 15:48:34,531 - INFO - Mapped 'STRAS' -> 'location.0.basicLocation.address.streetAddressOne', Value: '123 Main Street'
+2025-02-25 15:48:34,531 - INFO - Mapped 'TELF1' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: '+1 555 123 4567'
+2025-02-25 15:48:34,531 - INFO - Mapped 'LIFNR' -> 'location.0.basicLocation.shipFromLocations.shipFrom.0.primaryId', Value: '0000100000'
+2025-02-25 15:48:34,531 - INFO - Mapped 'SPRAS' -> 'location.0.basicLocation.description.languageCode', Value: 'EN'
+2025-02-25 15:48:34,531 - INFO - Mapped 'VKORG' -> 'location.0.sales.organization', Value: '1000'
+2025-02-25 15:48:34,531 - INFO - Mapped 'VTWEG' -> 'location.0.sales.channel', Value: '10'
+2025-02-25 15:48:34,531 - INFO - Mapped 'SPART' -> 'location.0.sales.division', Value: '00'
+2025-02-25 15:48:34,531 - INFO - Mapped 'PARVW' -> 'location.0.sales.partnerFunctions.partySold', Value: 'AG'
+2025-02-25 15:48:34,531 - INFO - Mapped 'KUNNR' -> 'location.0.sales.partnerFunctions.partnerNumber', Value: '0000100000'
+2025-02-25 15:48:34,531 - INFO - Mapped 'PARVW' -> 'location.0.sales.partnerFunctions.partySold', Value: 'WE'
+2025-02-25 15:48:34,531 - INFO - Mapped 'KUNNR' -> 'location.0.sales.partnerFunctions.partnerNumber', Value: '0000100001'
+2025-02-25 15:48:34,532 - INFO - Mapped 'BUKRS' -> 'location.0.financial.companyCode', Value: '1000'
+2025-02-25 15:48:34,532 - INFO - Mapped 'AKONT' -> 'location.0.financial.reconciliationAccount', Value: '140000'
+2025-02-25 15:48:34,532 - INFO - Mapped 'ZUAWA' -> 'location.0.financial.sortKey', Value: '0001'
+2025-02-25 15:48:34,532 - INFO - Mapped 'PARNR' -> 'location.0.basicLocation.contact.0.personName', Value: '000100'
+2025-02-25 15:48:34,532 - INFO - Mapped 'NAMEV' -> 'location.0.basicLocation.contact.0.honorific', Value: 'Mr.'
+2025-02-25 15:48:34,532 - INFO - Mapped 'NAME1' -> 'location.0.basicLocation.contact.0.personFirstName', Value: 'John Doe'
+2025-02-25 15:48:34,532 - INFO - Mapped 'TELF1' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: '+1 555 987 6543'
+2025-02-25 15:48:34,532 - INFO - Mapped 'SMTP_ADDR' -> 'location.0.basicLocation.contact.0.communicationChannel.0.communicationValue', Value: 'john.doe@abclogistics.com'
+2025-02-25 15:48:34,532 - INFO - Mapped 'LIFNR' -> 'location.0.logisticDetails.carrier.primaryId', Value: '0000100001'
+2025-02-25 15:48:34,532 - INFO - Mapped 'VSART' -> 'location.0.logisticDetails.shipmentCreationRule', Value: '01'
+2025-02-25 15:48:34,532 - INFO - Mapped 'LZONE' -> 'location.0.logisticDetails.shippingZone', Value: '0001'
+2025-02-25 15:48:34,532 - INFO - Mapped 'ROUTE' -> 'location.0.logisticDetails.shippingRoute', Value: '0001'
+2025-02-25 15:48:34,532 - INFO - Mapped 'TRATY' -> 'location.0.logisticDetails.transportationType', Value: '01'
+2025-02-25 15:48:34,532 - INFO - Mapped 'BANKL' -> 'location.0.financial.bankDetails.bankKey', Value: '00123456'
+2025-02-25 15:48:34,532 - INFO - Mapped 'BANKS' -> 'location.0.financial.bankDetails.bankCountryKey', Value: 'US'
+2025-02-25 15:48:34,532 - INFO - Mapped 'BANKN' -> 'location.0.financial.bankDetails.bankAccountNumber', Value: '123456789'
+2025-02-25 15:48:34,533 - INFO - Mapped 'BVTYP' -> 'location.0.financial.bankDetails.bankAccountType', Value: '001'
+2025-02-25 15:48:34,533 - INFO - Mapped 'TAXKD' -> 'location.0.financial.taxDetails.taxCategory', Value: 'US1'
+2025-02-25 15:48:34,533 - INFO - Mapped 'TAXKN' -> 'location.0.financial.taxDetails.taxNumber', Value: '123456789'
+2025-02-25 15:48:34,533 - INFO - IDoc successfully parsed from C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\source\Cust Locations IDOC.xml
+2025-02-25 15:48:34,535 - INFO - Loaded plugin: C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\extensions\plugin_llm_mapping.py
+2025-02-25 15:48:34,536 - INFO - Loaded plugin: C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\extensions\plugin_sap_metadata.py
+2025-02-25 15:48:34,537 - INFO - Running post_process in plugin: plugin
+2025-02-25 15:48:34,537 - INFO - Running post_process in plugin: plugin
+2025-02-25 15:48:34,539 - INFO - Output JSON is valid against the schema.
+2025-02-25 15:48:34,550 - INFO - BYDM JSON successfully generated at C:\Users\EY475AX\Downloads\github_actions_post\Data-Integration\Idoc_Simulator\output\BYDM_Format.json
