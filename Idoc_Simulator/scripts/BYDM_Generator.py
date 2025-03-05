@@ -240,30 +240,6 @@ def parse_idoc(xml_path, config, template):
         raise
 
 # ---------------------------
-# Plugin Loader for Extensibility
-# ---------------------------
-def load_plugins(plugin_dir):
-    plugins = []
-    for plugin_path in glob.glob(str(plugin_dir / "*.py")):
-        spec = importlib.util.spec_from_file_location("plugin", plugin_path)
-        plugin = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(plugin)
-        plugins.append(plugin)
-        logger.info(f"Loaded plugin: {plugin_path}")
-    return plugins
-
-def run_plugins(output_json, mapping_config):
-    plugin_dir = base_path / "extensions"
-    if plugin_dir.exists():
-        plugins = load_plugins(plugin_dir)
-        for plugin in plugins:
-            if hasattr(plugin, "post_process"):
-                logger.info(f"Running post_process in plugin: {plugin.__name__}")
-                plugin.post_process(output_json, mapping_config)
-    else:
-        logger.info("No extensions directory found; skipping plugins.")
-
-# ---------------------------
 # Schema Validation
 # ---------------------------
 def validate_schema(output_json, schema_path):
@@ -294,9 +270,6 @@ if __name__ == "__main__":
 
     bydm_json = parse_idoc(idoc_xml_path, config, template)
     run_plugins(bydm_json, config['mappings'])
-
-    from extensions import plugin_llm_mapping
-    plugin_llm_mapping.post_process(bydm_json, config['mappings'])
 
     validate_schema(bydm_json, schema_json_path)
 
