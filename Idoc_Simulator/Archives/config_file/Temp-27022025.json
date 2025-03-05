@@ -1,0 +1,1554 @@
+[
+  {
+    "creationDateTime": "2025-02-27T12:57:52.742Z",
+    "documentStatusCode": "ADDITIONAL_TRANSMISSION",
+    "documentActionCode": "ADD",
+    "lastUpdateDateTime": "2025-02-27T12:57:52.742Z",
+    "extensions": {},
+    "avpList": [
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.742Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.742Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.742Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.742Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      }
+    ],
+    "entityId": "string",
+    "externalEntityId": "string",
+    "locationId": "string",
+    "parentParty": {
+      "primaryId": "string",
+      "additionalPartyId": [
+        {
+          "value": "string",
+          "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+        }
+      ],
+      "name": "string",
+      "parentRole": "BREEDER"
+    },
+    "basicLocation": {
+      "additionalPartyId": [
+        {
+          "value": "string",
+          "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+        }
+      ],
+      "sublocationId": "string",
+      "banner": "string",
+      "locationName": "string",
+      "description": {
+        "value": "string",
+        "languageCode": "aa",
+        "descriptionType": "string",
+        "actionCode": "ADD"
+      },
+      "address": {
+        "city": "string",
+        "cityCode": "string",
+        "countryCode": "AF",
+        "countryName": "string",
+        "currencyOfPartyCode": "AFN",
+        "languageOfThePartyCode": "aa",
+        "name": "string",
+        "pOBoxNumber": "string",
+        "postalCode": "string",
+        "state": "string",
+        "streetAddressOne": "string",
+        "streetAddressTwo": "string",
+        "streetAddressThree": "string",
+        "geographicalCoordinates": {
+          "latitude": "string",
+          "longitude": "string",
+          "altitude": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          }
+        },
+        "addressDistrict": "string",
+        "regionName": "string",
+        "addressRegion": "string",
+        "addressSubregion": "string",
+        "addressDescription": "string"
+      },
+      "contact": [
+        {
+          "contactTypeCode": "AA",
+          "personName": "string",
+          "departmentName": "string",
+          "jobTitle": "string",
+          "communicationChannel": [
+            {
+              "communicationChannelCode": "EMAIL",
+              "communicationValue": "string",
+              "communicationChannelName": "string"
+            }
+          ],
+          "companyName": "string",
+          "personFirstName": "string",
+          "personLastName": "string",
+          "isPrimaryContact": true,
+          "honorific": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "contactTypeCode": "AA",
+          "personName": "string",
+          "departmentName": "string",
+          "jobTitle": "string",
+          "communicationChannel": [
+            {
+              "communicationChannelCode": "EMAIL",
+              "communicationValue": "string",
+              "communicationChannelName": "string"
+            }
+          ],
+          "companyName": "string",
+          "personFirstName": "string",
+          "personLastName": "string",
+          "isPrimaryContact": true,
+          "honorific": "string",
+          "actionCode": "CHANGE"
+        }
+      ],
+      "organisationName": "string",
+      "operatingHours": {
+        "utcOffset": 0,
+        "regularOperatingHours": [
+          {
+            "dayOfTheWeekCode": "FRIDAY",
+            "isOperational": true,
+            "closingTime": "string",
+            "openingTime": "string"
+          }
+        ],
+        "specialOperatingHours": [
+          {
+            "isOperational": true,
+            "specialDate": "2025-02-27",
+            "closingTime": "string",
+            "openingTime": "string",
+            "specialDateName": {
+              "value": "string",
+              "languageCode": "aa"
+            }
+          }
+        ],
+        "daylightSavingsOffset": 0,
+        "timeZoneCode": "Europe/Andorra"
+      },
+      "locationTypeCode": "BREEDER",
+      "locationSubType": "string",
+      "accountGroup": "string",
+      "isCrossDock": true,
+      "shipToLocations": {
+        "isManagedByTransportation": true,
+        "allLocations": true,
+        "shipTo": [
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "ADD"
+          },
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "CHANGE"
+          }
+        ]
+      },
+      "shipFromLocations": {
+        "isManagedByTransportation": true,
+        "allLocations": true,
+        "shipFrom": [
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "ADD",
+            "isDefaultShipFromLocation": true
+          },
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "CHANGE",
+            "isDefaultShipFromLocation": true
+          }
+        ]
+      },
+      "status": [
+        {
+          "statusCode": "string",
+          "effectiveFromDate": "2025-02-27",
+          "effectiveTime": "string",
+          "effectiveUpToDate": "2025-02-27",
+          "extensions": {},
+          "avpList": [
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            }
+          ],
+          "actionCode": "ADD"
+        },
+        {
+          "statusCode": "string",
+          "effectiveFromDate": "2025-02-27",
+          "effectiveTime": "string",
+          "effectiveUpToDate": "2025-02-27",
+          "extensions": {},
+          "avpList": [
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.743Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "CHANGE"
+            }
+          ],
+          "actionCode": "CHANGE"
+        }
+      ],
+      "deliveryPostalCode": [
+        "string"
+      ],
+      "isTemporaryAddress": true,
+      "isResidentialAddress": true,
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "accessGroup": "string",
+    "throughputGroupName": "string",
+    "businessUnitId": "string",
+    "despatchAdviceRestrictionCode": "NO_RESTRICTION",
+    "trackDeliveryCapacity": true,
+    "locationHierarchyInformation": {
+      "memberName": "string",
+      "hierarchyId": "string",
+      "hierarchyLevelId": "string",
+      "hierarchyLevelNumber": 0,
+      "ancestry": [
+        {
+          "actionCode": "ADD",
+          "hierarchyId": "string",
+          "hierarchyLevelId": "string",
+          "memberId": "string",
+          "memberName": "string"
+        },
+        {
+          "actionCode": "CHANGE",
+          "hierarchyId": "string",
+          "hierarchyLevelId": "string",
+          "memberId": "string",
+          "memberName": "string"
+        }
+      ]
+    },
+    "logisticDetails": {
+      "maximumShipmentWeight": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "maximumShipmentVolume": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "fixedLoadingDurationInHours": 0,
+      "minimumVariableLoadingDurationInHours": 0,
+      "maximumVariableLoadingDurationInHours": 0,
+      "carrier": {
+        "primaryId": "string",
+        "additionalPartyId": [
+          {
+            "value": "string",
+            "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+          }
+        ],
+        "name": "string"
+      },
+      "earlyDeliveryTolerance": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "lateDeliveryTolerance": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "allowDropOffCode": "D_NULL",
+      "allowPickUpCode": "P_NULL",
+      "isShipmentDeconsolidationAllowed": true,
+      "isPartialShipmentAllowed": true,
+      "isPartialAllocationAllowed": true,
+      "isCarrierChangable": true,
+      "isSplitCaseAllowed": true,
+      "distanceOverrideCode": "string",
+      "storageAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "manufacturerOfTradeItem": {
+        "primaryId": "string",
+        "additionalPartyId": [
+          {
+            "value": "string",
+            "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+          }
+        ],
+        "name": "string"
+      },
+      "inventoryStatusProgression": "string",
+      "shipmentLabelId": "string",
+      "shipmentCreationRule": "string",
+      "carrierGroup": "string",
+      "isCrossdockAllowed": true,
+      "isTransportationPlanningRequired": true,
+      "isFreshnessProcessingRequired": true,
+      "minimumShelfHours": 0,
+      "departmentId": "string",
+      "reservationPriority": "string",
+      "inventorySelectionMethod": "string",
+      "palletBuildingConsolidationRule": "string",
+      "absoluteInventoryRotationWindow": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "allocationSearchPathId": "string",
+      "isLPNAttribute1Required": true,
+      "isLPNAttribute2Required": true,
+      "isLPNAttribute3Required": true,
+      "isLPNAttribute4Required": true,
+      "isLPNAttribute5Required": true,
+      "repackClass": [
+        "string"
+      ],
+      "assetInformation": [
+        {
+          "assetType": "string",
+          "pickingUnitOfMeasure": "1A"
+        }
+      ],
+      "customerCategoryId": "string",
+      "isStandardCaseRequired": true,
+      "parcelBillingId": "string",
+      "consignmentTrackingCode": "TRKNONE",
+      "inventoryStatusType": "LOW_QUALITY",
+      "lotFormatId": "string",
+      "serialNumberType": "string",
+      "automaticallyReceiveASN": true,
+      "locationItemInformation": [
+        {
+          "itemId": "string",
+          "ownerOfTradeItem": "string",
+          "handlingAssetType": "string",
+          "inventoryStatusType": "LOW_QUALITY",
+          "lotFormatId": "string",
+          "serialNumberType": "string",
+          "reorderQuantity": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          },
+          "reorderPoint": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          },
+          "isLPNAttribute1Required": true,
+          "isLPNAttribute2Required": true,
+          "isLPNAttribute3Required": true,
+          "isLPNAttribute4Required": true,
+          "isLPNAttribute5Required": true,
+          "locationItemDetails": [
+            {
+              "logisticUnitConfigurationName": "string",
+              "isDefaultLogisticUnitConfiguration": true,
+              "handlingAssetType": "string",
+              "isLPNAttribute1Required": true,
+              "isLPNAttribute2Required": true,
+              "isLPNAttribute3Required": true,
+              "isLPNAttribute4Required": true,
+              "isLPNAttribute5Required": true
+            }
+          ]
+        }
+      ],
+      "locationConsignmentItemOverride": [
+        {
+          "itemId": "string",
+          "ownerOfTradeItem": "string",
+          "locationId": "string"
+        }
+      ],
+      "transportEquipmentRestriction": [
+        {
+          "transportEquipmentTypeCode": "string",
+          "restrictionCode": "IER_NULL"
+        }
+      ],
+      "carrierDetails": [
+        {
+          "carrierId": "string",
+          "carrierName": "string",
+          "parcelBillingId": "string",
+          "demurrage": [
+            {
+              "containerType": "string",
+              "freeHoldDays": 0,
+              "demurrageChargeAmountPerDay": 0
+            }
+          ]
+        }
+      ],
+      "isTransferHub": true,
+      "numberParkingSlots": 0,
+      "trailerDoor": "BOTH",
+      "allowBreaksWhileLoading": true,
+      "allowLoadToBecomeEmpty": true,
+      "assumeTrailerSwap": true,
+      "inboundLoadingCode": "LIVE_LOAD",
+      "outboundLoadingCode": "LIVE_LOAD",
+      "isFirstStopOnly": true,
+      "isLastStopOnly": true,
+      "loadingTimeInformation": [
+        {
+          "itemType": "string",
+          "loadingType": "string",
+          "hasHandlingTimeItemLoading": true,
+          "fixedStopTimeDuration": 0,
+          "loadingDivideByFactor": 0,
+          "loadingVariableTimeDuration": 0,
+          "loadingVariableCode": "PIECES",
+          "unloadingDivideByFactor": 0,
+          "unloadingVariableTimeDuration": 0,
+          "unloadingVariableCode": "PIECES",
+          "actionCode": "ADD"
+        },
+        {
+          "itemType": "string",
+          "loadingType": "string",
+          "hasHandlingTimeItemLoading": true,
+          "fixedStopTimeDuration": 0,
+          "loadingDivideByFactor": 0,
+          "loadingVariableTimeDuration": 0,
+          "loadingVariableCode": "PIECES",
+          "unloadingDivideByFactor": 0,
+          "unloadingVariableTimeDuration": 0,
+          "unloadingVariableCode": "PIECES",
+          "actionCode": "CHANGE"
+        }
+      ],
+      "maxInboundLoads": 0,
+      "maxOutboundLoads": 0,
+      "maxPenalty": 0,
+      "maxPieces": 0,
+      "minCube": 0,
+      "maxCube": 0,
+      "maxPallets": 0,
+      "minInboundLoads": 0,
+      "minOutboundLoads": 0,
+      "minPenalty": 0,
+      "minPieces": 0,
+      "minPallets": 0,
+      "minWeight": 0,
+      "isShipmentConsolidationAllowed": true,
+      "maxHandlingTimeDur": 0,
+      "maxPickAndDrop": 0,
+      "maxShipmentHoldTimeDur": 0,
+      "maxLoadWeight": 0,
+      "minCrossdockDur": 0,
+      "minHandlingTimeDur": 0,
+      "minLeadTimeDur": 0,
+      "minStopWeight": 0,
+      "requiredService": "string",
+      "earliestPreLoadingEndTimeDur": 0,
+      "latestPreLoadingEndTimeDur": 0,
+      "earliestPostDischargeStartTimeDur": 0,
+      "latestPostDischargeStartTimeDur": 0,
+      "maxTrailersPerLoad": 0,
+      "maxTrailersPerDrop": 0,
+      "maxTotalTrailerLength": 0,
+      "loadingUnloadingTimeCalculationCode": "EQUIPMENT_OVERRIDES",
+      "maxOriginSplits": 0,
+      "maxDestinationSplits": 0,
+      "minOriginShipmentWindowDur": 0,
+      "minDestinationShipmentWindowDur": 0,
+      "originSplitConstraint": "UNCONSTRAINED",
+      "destinationSplitConstraint": "UNCONSTRAINED",
+      "isOriginRule": true,
+      "isPercentageRule": true,
+      "minSplitValue": 0,
+      "minSplitUom": "WEIGHT",
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "planningDetails": {
+      "calendarId": "string",
+      "isCalendarEnabled": true,
+      "shippingCalendarId": "string",
+      "isShippingCalendarEnabled": true,
+      "arrivalCalendarId": "string",
+      "isArrivalCalendarEnabled": true,
+      "borrowingPercentage": 0,
+      "beginFreezeDate": "2025-02-27T12:57:52.743Z",
+      "lastOnHandPostDate": "2025-02-27T12:57:52.743Z",
+      "weatherArea": "string",
+      "isInventoryProjectionRequired": true,
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.743Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "retailDetails": {
+      "storeFormat": "string",
+      "demandChannel": "string",
+      "salesAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "buildingAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "demography": "string",
+      "categoryCode": [
+        "IS_IN_MALL"
+      ],
+      "competition": [
+        {
+          "competitionName": "string",
+          "distanceFromCompetition": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          }
+        }
+      ],
+      "remodelDate": [
+        "2025-02-27"
+      ],
+      "deliveryStartDate": "2025-02-27",
+      "driveUpServiceStartDate": "2025-02-27",
+      "parkingCapacity": 0,
+      "annualSalesRevenue": 0,
+      "isAvailableForAllocation": true
+    },
+    "fulfillmentDetails": {
+      "trackingLevel": "string",
+      "priority": 0,
+      "isFulfillmentCapacityTracked": true,
+      "isTransferEnabled": true,
+      "stockoutDays": 0,
+      "locationProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "inboundProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "outboundProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "futureProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      }
+    },
+    "isValidForTransportPlanning": true,
+    "isValidForExec": true,
+    "distributionCenterDetails": [
+      {
+        "actionCode": "ADD",
+        "distributionCenterId": "string",
+        "ownerOfStore": "string",
+        "processingPriority": 0,
+        "storeCategory": "string",
+        "storeGroup": "string",
+        "routeToCustomer": "string",
+        "billToCustomer": "string",
+        "storeStagingLocation": {
+          "destinationMovementZoneId": "string",
+          "sortSequence": 0,
+          "destinationLocation": "string",
+          "sourceBuildingId": "string"
+        },
+        "routeSchedule": {
+          "routeId": "string",
+          "beginDay": "FRIDAY",
+          "beginTime": "string",
+          "endDay": "FRIDAY",
+          "endTime": "string",
+          "stopNumber": 0
+        }
+      }
+    ],
+    "measures": {
+      "storageUnitOfMeasure": "MGM",
+      "measure": [
+        {
+          "measureType": "string",
+          "quantity": 0,
+          "effectiveFromDateTime": "2025-02-27T12:57:52.743Z",
+          "effectiveUpToDateTime": "2025-02-27T12:57:52.743Z"
+        }
+      ]
+    },
+    "manufacturingModelInformation": [
+      {
+        "modelId": "string",
+        "freezeWindowDuration": {
+          "value": 0,
+          "timeMeasurementUnitCode": "ANN"
+        }
+      }
+    ],
+    "locationPriorityAttribute": "string",
+    "parentLocationId": "string",
+    "captainLocationId": "string",
+    "isCaptainLocation": "s",
+    "requiresTransportPlanning": true,
+    "senderDocumentId": "string",
+    "senderSystem": "string"
+  },
+  {
+    "creationDateTime": "2025-02-27T12:57:52.743Z",
+    "documentStatusCode": "ADDITIONAL_TRANSMISSION",
+    "documentActionCode": "ADD",
+    "lastUpdateDateTime": "2025-02-27T12:57:52.743Z",
+    "extensions": {},
+    "avpList": [
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.743Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.743Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.743Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      },
+      {
+        "value": "string",
+        "binaryValue": "string",
+        "date": "2025-02-27",
+        "dateTime": "2025-02-27T12:57:52.743Z",
+        "name": "string",
+        "qualifierCodeName": "string",
+        "qualifierCodeList": "string",
+        "actionCode": "ADD"
+      }
+    ],
+    "entityId": "string",
+    "externalEntityId": "string",
+    "locationId": "string",
+    "parentParty": {
+      "primaryId": "string",
+      "additionalPartyId": [
+        {
+          "value": "string",
+          "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+        }
+      ],
+      "name": "string",
+      "parentRole": "BREEDER"
+    },
+    "basicLocation": {
+      "additionalPartyId": [
+        {
+          "value": "string",
+          "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+        }
+      ],
+      "sublocationId": "string",
+      "banner": "string",
+      "locationName": "string",
+      "description": {
+        "value": "string",
+        "languageCode": "aa",
+        "descriptionType": "string",
+        "actionCode": "ADD"
+      },
+      "address": {
+        "city": "string",
+        "cityCode": "string",
+        "countryCode": "AF",
+        "countryName": "string",
+        "currencyOfPartyCode": "AFN",
+        "languageOfThePartyCode": "aa",
+        "name": "string",
+        "pOBoxNumber": "string",
+        "postalCode": "string",
+        "state": "string",
+        "streetAddressOne": "string",
+        "streetAddressTwo": "string",
+        "streetAddressThree": "string",
+        "geographicalCoordinates": {
+          "latitude": "string",
+          "longitude": "string",
+          "altitude": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          }
+        },
+        "addressDistrict": "string",
+        "regionName": "string",
+        "addressRegion": "string",
+        "addressSubregion": "string",
+        "addressDescription": "string"
+      },
+      "contact": [
+        {
+          "contactTypeCode": "AA",
+          "personName": "string",
+          "departmentName": "string",
+          "jobTitle": "string",
+          "communicationChannel": [
+            {
+              "communicationChannelCode": "EMAIL",
+              "communicationValue": "string",
+              "communicationChannelName": "string"
+            }
+          ],
+          "companyName": "string",
+          "personFirstName": "string",
+          "personLastName": "string",
+          "isPrimaryContact": true,
+          "honorific": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "contactTypeCode": "AA",
+          "personName": "string",
+          "departmentName": "string",
+          "jobTitle": "string",
+          "communicationChannel": [
+            {
+              "communicationChannelCode": "EMAIL",
+              "communicationValue": "string",
+              "communicationChannelName": "string"
+            }
+          ],
+          "companyName": "string",
+          "personFirstName": "string",
+          "personLastName": "string",
+          "isPrimaryContact": true,
+          "honorific": "string",
+          "actionCode": "CHANGE"
+        }
+      ],
+      "organisationName": "string",
+      "operatingHours": {
+        "utcOffset": 0,
+        "regularOperatingHours": [
+          {
+            "dayOfTheWeekCode": "FRIDAY",
+            "isOperational": true,
+            "closingTime": "string",
+            "openingTime": "string"
+          }
+        ],
+        "specialOperatingHours": [
+          {
+            "isOperational": true,
+            "specialDate": "2025-02-27",
+            "closingTime": "string",
+            "openingTime": "string",
+            "specialDateName": {
+              "value": "string",
+              "languageCode": "aa"
+            }
+          }
+        ],
+        "daylightSavingsOffset": 0,
+        "timeZoneCode": "Europe/Andorra"
+      },
+      "locationTypeCode": "BREEDER",
+      "locationSubType": "string",
+      "accountGroup": "string",
+      "isCrossDock": true,
+      "shipToLocations": {
+        "isManagedByTransportation": true,
+        "allLocations": true,
+        "shipTo": [
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "ADD"
+          },
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "CHANGE"
+          }
+        ]
+      },
+      "shipFromLocations": {
+        "isManagedByTransportation": true,
+        "allLocations": true,
+        "shipFrom": [
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "ADD",
+            "isDefaultShipFromLocation": true
+          },
+          {
+            "primaryId": "string",
+            "additionalPartyId": [
+              {
+                "value": "string",
+                "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+              }
+            ],
+            "name": "string",
+            "actionCode": "CHANGE",
+            "isDefaultShipFromLocation": true
+          }
+        ]
+      },
+      "status": [
+        {
+          "statusCode": "string",
+          "effectiveFromDate": "2025-02-27",
+          "effectiveTime": "string",
+          "effectiveUpToDate": "2025-02-27",
+          "extensions": {},
+          "avpList": [
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            }
+          ],
+          "actionCode": "ADD"
+        },
+        {
+          "statusCode": "string",
+          "effectiveFromDate": "2025-02-27",
+          "effectiveTime": "string",
+          "effectiveUpToDate": "2025-02-27",
+          "extensions": {},
+          "avpList": [
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "ADD"
+            },
+            {
+              "value": "string",
+              "binaryValue": "string",
+              "date": "2025-02-27",
+              "dateTime": "2025-02-27T12:57:52.744Z",
+              "name": "string",
+              "qualifierCodeName": "string",
+              "qualifierCodeList": "string",
+              "actionCode": "CHANGE"
+            }
+          ],
+          "actionCode": "CHANGE"
+        }
+      ],
+      "deliveryPostalCode": [
+        "string"
+      ],
+      "isTemporaryAddress": true,
+      "isResidentialAddress": true,
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "accessGroup": "string",
+    "throughputGroupName": "string",
+    "businessUnitId": "string",
+    "despatchAdviceRestrictionCode": "NO_RESTRICTION",
+    "trackDeliveryCapacity": true,
+    "locationHierarchyInformation": {
+      "memberName": "string",
+      "hierarchyId": "string",
+      "hierarchyLevelId": "string",
+      "hierarchyLevelNumber": 0,
+      "ancestry": [
+        {
+          "actionCode": "ADD",
+          "hierarchyId": "string",
+          "hierarchyLevelId": "string",
+          "memberId": "string",
+          "memberName": "string"
+        },
+        {
+          "actionCode": "CHANGE",
+          "hierarchyId": "string",
+          "hierarchyLevelId": "string",
+          "memberId": "string",
+          "memberName": "string"
+        }
+      ]
+    },
+    "logisticDetails": {
+      "maximumShipmentWeight": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "maximumShipmentVolume": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "fixedLoadingDurationInHours": 0,
+      "minimumVariableLoadingDurationInHours": 0,
+      "maximumVariableLoadingDurationInHours": 0,
+      "carrier": {
+        "primaryId": "string",
+        "additionalPartyId": [
+          {
+            "value": "string",
+            "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+          }
+        ],
+        "name": "string"
+      },
+      "earlyDeliveryTolerance": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "lateDeliveryTolerance": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "allowDropOffCode": "D_NULL",
+      "allowPickUpCode": "P_NULL",
+      "isShipmentDeconsolidationAllowed": true,
+      "isPartialShipmentAllowed": true,
+      "isPartialAllocationAllowed": true,
+      "isCarrierChangable": true,
+      "isSplitCaseAllowed": true,
+      "distanceOverrideCode": "string",
+      "storageAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "manufacturerOfTradeItem": {
+        "primaryId": "string",
+        "additionalPartyId": [
+          {
+            "value": "string",
+            "typeCode": "BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+          }
+        ],
+        "name": "string"
+      },
+      "inventoryStatusProgression": "string",
+      "shipmentLabelId": "string",
+      "shipmentCreationRule": "string",
+      "carrierGroup": "string",
+      "isCrossdockAllowed": true,
+      "isTransportationPlanningRequired": true,
+      "isFreshnessProcessingRequired": true,
+      "minimumShelfHours": 0,
+      "departmentId": "string",
+      "reservationPriority": "string",
+      "inventorySelectionMethod": "string",
+      "palletBuildingConsolidationRule": "string",
+      "absoluteInventoryRotationWindow": {
+        "value": 0,
+        "timeMeasurementUnitCode": "ANN"
+      },
+      "allocationSearchPathId": "string",
+      "isLPNAttribute1Required": true,
+      "isLPNAttribute2Required": true,
+      "isLPNAttribute3Required": true,
+      "isLPNAttribute4Required": true,
+      "isLPNAttribute5Required": true,
+      "repackClass": [
+        "string"
+      ],
+      "assetInformation": [
+        {
+          "assetType": "string",
+          "pickingUnitOfMeasure": "1A"
+        }
+      ],
+      "customerCategoryId": "string",
+      "isStandardCaseRequired": true,
+      "parcelBillingId": "string",
+      "consignmentTrackingCode": "TRKNONE",
+      "inventoryStatusType": "LOW_QUALITY",
+      "lotFormatId": "string",
+      "serialNumberType": "string",
+      "automaticallyReceiveASN": true,
+      "locationItemInformation": [
+        {
+          "itemId": "string",
+          "ownerOfTradeItem": "string",
+          "handlingAssetType": "string",
+          "inventoryStatusType": "LOW_QUALITY",
+          "lotFormatId": "string",
+          "serialNumberType": "string",
+          "reorderQuantity": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          },
+          "reorderPoint": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          },
+          "isLPNAttribute1Required": true,
+          "isLPNAttribute2Required": true,
+          "isLPNAttribute3Required": true,
+          "isLPNAttribute4Required": true,
+          "isLPNAttribute5Required": true,
+          "locationItemDetails": [
+            {
+              "logisticUnitConfigurationName": "string",
+              "isDefaultLogisticUnitConfiguration": true,
+              "handlingAssetType": "string",
+              "isLPNAttribute1Required": true,
+              "isLPNAttribute2Required": true,
+              "isLPNAttribute3Required": true,
+              "isLPNAttribute4Required": true,
+              "isLPNAttribute5Required": true
+            }
+          ]
+        }
+      ],
+      "locationConsignmentItemOverride": [
+        {
+          "itemId": "string",
+          "ownerOfTradeItem": "string",
+          "locationId": "string"
+        }
+      ],
+      "transportEquipmentRestriction": [
+        {
+          "transportEquipmentTypeCode": "string",
+          "restrictionCode": "IER_NULL"
+        }
+      ],
+      "carrierDetails": [
+        {
+          "carrierId": "string",
+          "carrierName": "string",
+          "parcelBillingId": "string",
+          "demurrage": [
+            {
+              "containerType": "string",
+              "freeHoldDays": 0,
+              "demurrageChargeAmountPerDay": 0
+            }
+          ]
+        }
+      ],
+      "isTransferHub": true,
+      "numberParkingSlots": 0,
+      "trailerDoor": "BOTH",
+      "allowBreaksWhileLoading": true,
+      "allowLoadToBecomeEmpty": true,
+      "assumeTrailerSwap": true,
+      "inboundLoadingCode": "LIVE_LOAD",
+      "outboundLoadingCode": "LIVE_LOAD",
+      "isFirstStopOnly": true,
+      "isLastStopOnly": true,
+      "loadingTimeInformation": [
+        {
+          "itemType": "string",
+          "loadingType": "string",
+          "hasHandlingTimeItemLoading": true,
+          "fixedStopTimeDuration": 0,
+          "loadingDivideByFactor": 0,
+          "loadingVariableTimeDuration": 0,
+          "loadingVariableCode": "PIECES",
+          "unloadingDivideByFactor": 0,
+          "unloadingVariableTimeDuration": 0,
+          "unloadingVariableCode": "PIECES",
+          "actionCode": "ADD"
+        },
+        {
+          "itemType": "string",
+          "loadingType": "string",
+          "hasHandlingTimeItemLoading": true,
+          "fixedStopTimeDuration": 0,
+          "loadingDivideByFactor": 0,
+          "loadingVariableTimeDuration": 0,
+          "loadingVariableCode": "PIECES",
+          "unloadingDivideByFactor": 0,
+          "unloadingVariableTimeDuration": 0,
+          "unloadingVariableCode": "PIECES",
+          "actionCode": "CHANGE"
+        }
+      ],
+      "maxInboundLoads": 0,
+      "maxOutboundLoads": 0,
+      "maxPenalty": 0,
+      "maxPieces": 0,
+      "minCube": 0,
+      "maxCube": 0,
+      "maxPallets": 0,
+      "minInboundLoads": 0,
+      "minOutboundLoads": 0,
+      "minPenalty": 0,
+      "minPieces": 0,
+      "minPallets": 0,
+      "minWeight": 0,
+      "isShipmentConsolidationAllowed": true,
+      "maxHandlingTimeDur": 0,
+      "maxPickAndDrop": 0,
+      "maxShipmentHoldTimeDur": 0,
+      "maxLoadWeight": 0,
+      "minCrossdockDur": 0,
+      "minHandlingTimeDur": 0,
+      "minLeadTimeDur": 0,
+      "minStopWeight": 0,
+      "requiredService": "string",
+      "earliestPreLoadingEndTimeDur": 0,
+      "latestPreLoadingEndTimeDur": 0,
+      "earliestPostDischargeStartTimeDur": 0,
+      "latestPostDischargeStartTimeDur": 0,
+      "maxTrailersPerLoad": 0,
+      "maxTrailersPerDrop": 0,
+      "maxTotalTrailerLength": 0,
+      "loadingUnloadingTimeCalculationCode": "EQUIPMENT_OVERRIDES",
+      "maxOriginSplits": 0,
+      "maxDestinationSplits": 0,
+      "minOriginShipmentWindowDur": 0,
+      "minDestinationShipmentWindowDur": 0,
+      "originSplitConstraint": "UNCONSTRAINED",
+      "destinationSplitConstraint": "UNCONSTRAINED",
+      "isOriginRule": true,
+      "isPercentageRule": true,
+      "minSplitValue": 0,
+      "minSplitUom": "WEIGHT",
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "planningDetails": {
+      "calendarId": "string",
+      "isCalendarEnabled": true,
+      "shippingCalendarId": "string",
+      "isShippingCalendarEnabled": true,
+      "arrivalCalendarId": "string",
+      "isArrivalCalendarEnabled": true,
+      "borrowingPercentage": 0,
+      "beginFreezeDate": "2025-02-27T12:57:52.744Z",
+      "lastOnHandPostDate": "2025-02-27T12:57:52.744Z",
+      "weatherArea": "string",
+      "isInventoryProjectionRequired": true,
+      "extensions": {},
+      "avpList": [
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "ADD"
+        },
+        {
+          "value": "string",
+          "binaryValue": "string",
+          "date": "2025-02-27",
+          "dateTime": "2025-02-27T12:57:52.744Z",
+          "name": "string",
+          "qualifierCodeName": "string",
+          "qualifierCodeList": "string",
+          "actionCode": "CHANGE"
+        }
+      ]
+    },
+    "retailDetails": {
+      "storeFormat": "string",
+      "demandChannel": "string",
+      "salesAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "buildingAreaSize": {
+        "value": 0,
+        "measurementUnitCode": "MGM"
+      },
+      "demography": "string",
+      "categoryCode": [
+        "IS_IN_MALL"
+      ],
+      "competition": [
+        {
+          "competitionName": "string",
+          "distanceFromCompetition": {
+            "value": 0,
+            "measurementUnitCode": "MGM"
+          }
+        }
+      ],
+      "remodelDate": [
+        "2025-02-27"
+      ],
+      "deliveryStartDate": "2025-02-27",
+      "driveUpServiceStartDate": "2025-02-27",
+      "parkingCapacity": 0,
+      "annualSalesRevenue": 0,
+      "isAvailableForAllocation": true
+    },
+    "fulfillmentDetails": {
+      "trackingLevel": "string",
+      "priority": 0,
+      "isFulfillmentCapacityTracked": true,
+      "isTransferEnabled": true,
+      "stockoutDays": 0,
+      "locationProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "inboundProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "outboundProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      },
+      "futureProcessingTime": {
+        "minimumDurationInMinutes": 0,
+        "maximumDurationInMinutes": 0
+      }
+    },
+    "isValidForTransportPlanning": true,
+    "isValidForExec": true,
+    "distributionCenterDetails": [
+      {
+        "actionCode": "ADD",
+        "distributionCenterId": "string",
+        "ownerOfStore": "string",
+        "processingPriority": 0,
+        "storeCategory": "string",
+        "storeGroup": "string",
+        "routeToCustomer": "string",
+        "billToCustomer": "string",
+        "storeStagingLocation": {
+          "destinationMovementZoneId": "string",
+          "sortSequence": 0,
+          "destinationLocation": "string",
+          "sourceBuildingId": "string"
+        },
+        "routeSchedule": {
+          "routeId": "string",
+          "beginDay": "FRIDAY",
+          "beginTime": "string",
+          "endDay": "FRIDAY",
+          "endTime": "string",
+          "stopNumber": 0
+        }
+      }
+    ],
+    "measures": {
+      "storageUnitOfMeasure": "MGM",
+      "measure": [
+        {
+          "measureType": "string",
+          "quantity": 0,
+          "effectiveFromDateTime": "2025-02-27T12:57:52.744Z",
+          "effectiveUpToDateTime": "2025-02-27T12:57:52.744Z"
+        }
+      ]
+    },
+    "manufacturingModelInformation": [
+      {
+        "modelId": "string",
+        "freezeWindowDuration": {
+          "value": 0,
+          "timeMeasurementUnitCode": "ANN"
+        }
+      }
+    ],
+    "locationPriorityAttribute": "string",
+    "parentLocationId": "string",
+    "captainLocationId": "string",
+    "isCaptainLocation": "s",
+    "requiresTransportPlanning": true,
+    "senderDocumentId": "string",
+    "senderSystem": "string"
+  }
+]

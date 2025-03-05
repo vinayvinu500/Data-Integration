@@ -282,6 +282,7 @@ if __name__ == "__main__":
     idoc_xml_path = base_path / "source" / "Cust Locations IDOC.xml"
     config_json_path = base_path / "config_file" / "Location_mapping.json"
     template_json_path = base_path / "config_file" / "Location_Template.json"
+    # template_json_path = base_path / "config_file" / "Temp-27022025.json"
     bydm_json_path = base_path / "output" / "BYDM_Format.json"
     schema_json_path = base_path / "config_file" / "locationMessage.json"  # Extended schema
 
